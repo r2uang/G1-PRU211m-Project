@@ -17,13 +17,12 @@ public class Enemy :  MonoBehaviour,IBaseEntity
     {
         _body = GetComponent<Rigidbody2D>();
         target = FindObjectOfType<Player>().transform;
-        Debug.Log(target.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(target.position,transform.position) <= enemyData.maxRange && Vector3.Distance(target.position, transform.position)  >= enemyData.minRange)
+        if (Vector3.Distance(target.position,transform.position) <= enemyData.maxRange || Vector3.Distance(target.position, transform.position)  >= enemyData.minRange)
         {
             Movement();
         }
