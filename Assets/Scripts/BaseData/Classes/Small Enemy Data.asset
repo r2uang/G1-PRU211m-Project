@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd140ddbb008e5945977ea8a066b78f6, type: 3}
+  m_Name: Small Enemy Data
+  m_EditorClassIdentifier: 
+  className: Small Enermy
+  classDescription: Dumb
+  HP: 5
+  percentRegenHP: 1
+  armor: 4
+  percentDamage: 0
+  meleeDamage: 0
+  rangeDamage: 0
+  elementDamage: 0
+  percentLifeSteel: 0
+  range: 5
+  minRange: 0.25
+  maxRange: 10
+  percentAttackSpeed: 0
+  Speed: 2
+  xpDrop: 10
+  percentExpGains: 0
+  percentCoinGains: 0
