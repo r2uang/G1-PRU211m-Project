@@ -253,10 +253,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - tag: Enemy
+  - tag: Small Enemy
+    prefab: {fileID: 7970205845878994290, guid: 3af1a63eb2b0e1f41adf307c5ad89ff0, type: 3}
+    size: 1
+    maxSize: 15
+  - tag: Big Enemy
     prefab: {fileID: 7970205845878994290, guid: fa26e89cb7ee993448259021f5185c3a, type: 3}
     size: 1
-    maxSize: 20
+    maxSize: 10
 --- !u!114 &158697373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d3181a066c5664c8db4c4a5437b091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTimer: 3
+  spawnTimer: 2
   tileMap: {fileID: 883261407}
   availablePlaces: []
 --- !u!1 &163747330

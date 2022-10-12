@@ -21,7 +21,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
     }
     public List<Pool> pools;
 
-    private Dictionary<string, List<GameObject>> poolDictionary;
+    public Dictionary<string, List<GameObject>> poolDictionary;
     private void Start()
     {
         poolDictionary = new Dictionary<string, List<GameObject>>();

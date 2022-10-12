@@ -22,7 +22,7 @@ namespace BaseData
         public float rangeDamage;
         public float elementDamage;
         public float percentLifeSteel = 0;
-        public float range = 0;
+        public float attackRange = 0;
         public float minRange = 0;
         public float maxRange = 0;
 
