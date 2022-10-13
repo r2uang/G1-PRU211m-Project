@@ -9,7 +9,7 @@ public class SpawnEnemyManager : MonoBehaviour
 
     [Header("Spawn System")]
     [SerializeField]
-    private float spawnTimer = 0f;
+    private float spawnTimer = 5f;
 
     [SerializeField]
     private Tilemap tileMap;
@@ -38,29 +38,25 @@ public class SpawnEnemyManager : MonoBehaviour
                     //Tile at "place"
                     availablePlaces.Add(place);
                 }
-                else
-                {
-                    //No tile at "place"
-                }
             }
         }
     }
 
     private void Update()
     {
-        spawnTimer += Time.deltaTime;
+        spawnTimer -= Time.deltaTime;
     }
 
     private void FixedUpdate()
     {
-        InvokeRepeating("SpawnBoulder", spawnTimer, 0.05f);
+        InvokeRepeating("SpawnBoulder", spawnTimer, 0.5f);
 
 
     }
 
     private void SpawnBoulder()
     {
-        if (spawnTimer > 2)
+        if (spawnTimer <= 0)
         {
             for (int i = 0; i < availablePlaces.Count; i++)
             {
@@ -70,7 +66,7 @@ public class SpawnEnemyManager : MonoBehaviour
 
                 }
             }
-            spawnTimer = 0f;
+            spawnTimer = 5f;
         }
     
     }

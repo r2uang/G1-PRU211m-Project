@@ -22,11 +22,11 @@ MonoBehaviour:
   rangeDamage: 0
   elementDamage: 0
   percentLifeSteel: 0
-  range: 5
+  attackRange: 0
   minRange: 0.25
   maxRange: 10
   percentAttackSpeed: 0
-  Speed: 3
+  Speed: 1
   xpDrop: 10
   percentExpGains: 0
   percentCoinGains: 0
