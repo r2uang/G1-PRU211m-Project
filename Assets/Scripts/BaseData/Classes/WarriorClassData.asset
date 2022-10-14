@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   className: Warrior
   classDescription: Dump Class
-  HP: 14
+  HP: 5
   percentRegenHP: 5
   armor: 1
   percentDamage: 0

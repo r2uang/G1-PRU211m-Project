@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6831026ce765b1644ba409b6abfc9521, type: 3}
   m_Name: Player Data
   m_EditorClassIdentifier: 
-  className: Warrior
+  className: Player
   classDescription: Dump Class
   HP: 100
   percentRegenHP: 5

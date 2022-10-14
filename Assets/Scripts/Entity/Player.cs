@@ -8,7 +8,7 @@ public class Player : MonoBehaviour, IBaseEntity
 
     private Rigidbody2D _body;
     
-    public float BaseSpeed { get; set; } = 15;
+    public float BaseSpeed { get; set; } = 5;
     public float SmoothTime { get; set; } = 0.04f;
 
     private Vector3 velocitySmoothing;

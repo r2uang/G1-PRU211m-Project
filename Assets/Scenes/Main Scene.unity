@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d3181a066c5664c8db4c4a5437b091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTimer: 5
+  spawnTimer: 2
   tileMap: {fileID: 883261407}
   availablePlaces: []
 --- !u!1 &163743776
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileMapPrefab: {fileID: 64066603}
   m_TileMapBlockWidth: 36
-  playerReferencer: {fileID: 0}
+  playerReferencer: {fileID: 7970205845878994290, guid: fd6473e6e4c5d6e45973137f52545072, type: 3}
   TimeBetweenRecalculations: 0.5
 --- !u!4 &163743778
 Transform:
