@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class Player : MonoBehaviour, IBaseEntity
 {
@@ -17,8 +19,33 @@ public class Player : MonoBehaviour, IBaseEntity
     private State PlayerState { get; set; } = State.IDLE;
 
     private Vector3 moveDir;
+
+    private float Range;
+
+    private Transform Target;
+
+    private bool Detected = false;
+
+    private Vector2 Direction;
+
+    //[SerializeField]
+    //private GameObject Gun;
+
+    [SerializeField]
+    private GameObject Bullet;
+
+    public float FireRate;
+
+    public float nextTimeToFire;
+
+    public Transform bulletPoint;
+
+    public float Force;
+    
     void Start()
     {
+        Target = transform;
+        Range = playerData.shootingRange;
         _body = GetComponent<Rigidbody2D>();
         joystick = GameObject.FindGameObjectWithTag("InputControl").GetComponent<FloatingJoystick>();
     }
@@ -34,8 +61,93 @@ public class Player : MonoBehaviour, IBaseEntity
                 Idle();
                 break;
         }
-        
     }
+
+    private void FixedUpdate()
+    {
+        Target = GetClosestEnemy(GetTransformEnemies());
+        RaycastPosition();
+    }
+
+    private List<Transform> GetTransformEnemies()
+    {
+        GameObject[] bigEnemies = GameObject.FindGameObjectsWithTag("Big Enemy");
+        GameObject[] smallEnemies = GameObject.FindGameObjectsWithTag("Small Enemy");
+        List<Transform> result = new List<Transform>();
+        foreach(var bigEnermy in bigEnemies)
+        {
+            result.Add(bigEnermy.transform);
+        }
+        foreach(var smallEnermy in smallEnemies)
+        {
+            result.Add(smallEnermy.transform);
+        }
+        return result;
+    }
+
+    private Transform GetClosestEnemy(List<Transform> enemies)
+    {
+        Transform bestTarget = null;
+        float closestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+        foreach (Transform potentialTarget in enemies)
+        {
+            Vector3 directionToTarget = potentialTarget.position - currentPosition;
+            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            if (dSqrToTarget < closestDistanceSqr)
+            {
+                closestDistanceSqr = dSqrToTarget;
+                bestTarget = potentialTarget;
+            }
+        }
+        return bestTarget;
+
+    }
+
+    private void RaycastPosition()
+    {
+        Vector2 targetPos = Target.position;
+        Direction = targetPos - (Vector2)transform.position;
+        RaycastHit2D rayInfo = Physics2D.Raycast(transform.position, Direction, Range);
+        if (rayInfo)
+        {
+            if (rayInfo.collider.gameObject.tag == "Player")
+            {
+                
+                if (!Detected)
+                {
+                    Detected = true;
+
+                }
+                else
+                {
+                    Detected = false;
+                }
+            }
+        }
+
+        if (Detected)
+        {
+            //Gun.transform.up = Direction;
+            if (Time.time > nextTimeToFire)
+            {
+                nextTimeToFire = Time.time + 1 / FireRate;
+                Shoot();
+            }
+        }
+    }
+
+    private void Shoot()
+    {
+        GameObject BulletIns = Instantiate(Bullet, bulletPoint.position, Quaternion.identity);
+        BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * Force);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, Range);
+    }
+
     public void Movement()
     {
         bool isMoving = false;

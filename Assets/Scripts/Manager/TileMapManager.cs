@@ -208,7 +208,6 @@ public class TileMapManager : MonoBehaviour
             playerReferencer = GameObject.FindGameObjectWithTag("Player");
         }
         PlayerTileMapPostion = GetTileMapPositionClosetToPlayer();
-        Debug.Log(PlayerTileMapPostion);
     }
 
     private void InitTileMap()

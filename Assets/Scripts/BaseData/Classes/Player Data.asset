@@ -22,8 +22,9 @@ MonoBehaviour:
   rangeDamage: 10
   elementDamage: 0
   percentLifeSteel: 0
-  range: 0
+  range: 10
   percentAttackSpeed: 0
-  percentSpeed: 10
+  speed: 4
+  shootingRange: 20
   percentExpGains: 0
   percentCoinGains: 0

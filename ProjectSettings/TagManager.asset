@@ -8,6 +8,7 @@ TagManager:
   - Small Enemy
   - Big Enemy
   - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
