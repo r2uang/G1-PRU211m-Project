@@ -66,7 +66,11 @@ public class Player : MonoBehaviour, IBaseEntity
     private void FixedUpdate()
     {
         Target = GetClosestEnemy(GetTransformEnemies());
-        RaycastPosition();
+        if(Target != null)
+        {
+            RaycastPosition();
+        }
+        
     }
 
     private List<Transform> GetTransformEnemies()

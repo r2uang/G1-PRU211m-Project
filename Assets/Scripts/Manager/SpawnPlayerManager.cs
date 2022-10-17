@@ -24,7 +24,7 @@ public class SpawnPlayerManager : MonoBehaviour
     {
         if (!isCreated)
         {
-            Instantiate(playerPrefab, new Vector3(0.8f, -14.9f, -10), Quaternion.identity);
+            Instantiate(playerPrefab, new Vector3(0.8f, -7f, -10f), Quaternion.identity);
             isCreated = true;
         }
         

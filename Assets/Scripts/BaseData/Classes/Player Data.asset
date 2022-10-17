@@ -25,6 +25,6 @@ MonoBehaviour:
   range: 10
   percentAttackSpeed: 0
   speed: 4
-  shootingRange: 20
+  shootingRange: 10
   percentExpGains: 0
   percentCoinGains: 0
