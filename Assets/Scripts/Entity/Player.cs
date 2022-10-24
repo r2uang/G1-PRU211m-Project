@@ -31,19 +31,19 @@ public class Player : MonoBehaviour, IBaseEntity
     //[SerializeField]
     //private GameObject Gun;
 
-    [SerializeField]
-    private GameObject Bullet;
-
     public float FireRate;
 
     public float nextTimeToFire;
 
-    public Transform bulletPoint;
-
     public float Force;
+
+    Gun[] guns;
+
+    public float timeToFireBulletHell = 5;
     
     void Start()
     {
+        guns = transform.GetComponentsInChildren<Gun>();
         Target = transform;
         Range = playerData.shootingRange;
         _body = GetComponent<Rigidbody2D>();
@@ -143,11 +143,24 @@ public class Player : MonoBehaviour, IBaseEntity
 
     private void Shoot()
     {
-        GameObject BulletIns = Instantiate(Bullet, bulletPoint.position, Quaternion.identity);
-        BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * Force);
+        //GameObject BulletIns = Instantiate(Bullet, bulletPoint.position, Quaternion.identity);
+        //BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * Force);
+        
+
+        timeToFireBulletHell -= Time.deltaTime;
+        guns[0].Shoot(Direction,Force);
+        if(timeToFireBulletHell <= 0)
+        {
+            for(int i = 1;i < guns.Length; i++)
+            {
+                guns[i].Shoot(Direction,Force);
+            }
+            timeToFireBulletHell = 5;
+        }
+
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected() 
     {
         Gizmos.DrawWireSphere(transform.position, Range);
     }

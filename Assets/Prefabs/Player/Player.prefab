@@ -23,14 +23,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129376729025318068}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.12, y: -0.48, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.9238794, w: -0.38268375}
+  m_LocalPosition: {x: -0.65000004, y: 0.541, z: -0.0005051237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6571960643969919317}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 4061788586379170089}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 495}
 --- !u!1 &1490725355924857650
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +230,6 @@ Transform:
   - {fileID: 7871389936989576339}
   - {fileID: 4061788586379170089}
   - {fileID: 8231379324291549362}
-  - {fileID: 837777585022763040}
   m_Father: {fileID: 3180014547924719399}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -244,6 +243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4061788586379170089}
   - component: {fileID: 8258520095483232481}
+  - component: {fileID: 802300387768643569}
   m_Layer: 0
   m_Name: weapon_rifle_0
   m_TagString: Untagged
@@ -262,7 +262,8 @@ Transform:
   m_LocalPosition: {x: -0.113, y: -0.948, z: 0.0005051237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 837777585022763040}
   m_Father: {fileID: 6571960643969919317}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -318,6 +319,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &802300387768643569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7529217791600421230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79eb940f37455e4d9e7c4ed91bd546c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPoint: {fileID: 837777585022763040}
+  Bullet: {fileID: 8084603002241973856, guid: 554b29af4d4c827469580a7b82ed28cc, type: 3}
 --- !u!1 &7970205845878994290
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,11 +405,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 850289cf636fdec4295764aba8a01556, type: 2}
   joystick: {fileID: 8170153791668043265, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
-  Bullet: {fileID: 8084603002241973856, guid: 554b29af4d4c827469580a7b82ed28cc, type: 3}
-  FireRate: 1
+  FireRate: 1.5
   nextTimeToFire: 0
-  bulletPoint: {fileID: 837777585022763040}
-  Force: 100
+  Force: 150
 --- !u!114 &1157617214888958755
 MonoBehaviour:
   m_ObjectHideFlags: 0
