@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy :  MonoBehaviour,IBaseEntity
 {
+    [SerializeField]
+    private GameObject expPrefab;
     public BaseData.EnemyDataManager enemyData;
     private Rigidbody2D _body;
     private Transform target;
@@ -22,10 +24,16 @@ public class Enemy :  MonoBehaviour,IBaseEntity
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(target.position,transform.position) <= enemyData.maxRange || Vector3.Distance(target.position, transform.position)  >= enemyData.minRange)
+        if (Vector3.Distance(target.position, transform.position) > enemyData.range)
+        {
+            Debug.Log("Enemy Dieeeeeeeeeeeeeeeee");
+            gameObject.SetActive(false);
+        }
+        else if (Vector3.Distance(target.position,transform.position) <= enemyData.range)
         {
             Movement();
         }
+        
         
     }
 
@@ -33,4 +41,15 @@ public class Enemy :  MonoBehaviour,IBaseEntity
     {
         transform.position = Vector3.MoveTowards(transform.position,target.position, enemyData.Speed * Time.deltaTime);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Bullet")
+        {
+            gameObject.SetActive(false);
+            Destroy(collision.gameObject);
+            Instantiate(expPrefab , transform.position, Quaternion.identity);
+        }
+    }
+
 }

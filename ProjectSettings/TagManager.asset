@@ -9,6 +9,7 @@ TagManager:
   - Big Enemy
   - Enemy
   - Bullet
+  - Exp
   layers:
   - Default
   - TransparentFX

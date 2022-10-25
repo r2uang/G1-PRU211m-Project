@@ -204,75 +204,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96242866}
   m_CullTransparentMesh: 1
---- !u!1 &158697370
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 158697371}
-  - component: {fileID: 158697373}
-  - component: {fileID: 158697372}
-  m_Layer: 0
-  m_Name: Spawn Enemy Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &158697371
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 158697370}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 594386512}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &158697372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 158697370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f0f02844e9d2644bb9c05971913b977, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pools:
-  - tag: Small Enemy
-    prefab: {fileID: 7970205845878994290, guid: 3af1a63eb2b0e1f41adf307c5ad89ff0, type: 3}
-    size: 1
-    maxSize: 100
-  - tag: Big Enemy
-    prefab: {fileID: 7970205845878994290, guid: fa26e89cb7ee993448259021f5185c3a, type: 3}
-    size: 1
-    maxSize: 10
---- !u!114 &158697373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 158697370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53d3181a066c5664c8db4c4a5437b091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnTimer: 2
-  tileMap: {fileID: 883261407}
-  availablePlaces: []
 --- !u!1 &163743776
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +350,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 594386512}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &215681266
 MonoBehaviour:
@@ -434,6 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 7970205845878994290, guid: fd6473e6e4c5d6e45973137f52545072, type: 3}
+  pos: {fileID: 1623405612}
 --- !u!1 &364797041
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0.8, y: -7, z: 0}
+  m_TrackedObjectOffset: {x: 0.8, y: -7.99, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
@@ -624,8 +556,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431978795}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: -7, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.8, y: -7.99, z: -10}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 371763882}
@@ -660,13 +592,13 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
-  m_StandbyUpdate: 1
+  m_Priority: 9
+  m_StandbyUpdate: 2
   m_LookAt: {fileID: 3180014547924719399, guid: fd6473e6e4c5d6e45973137f52545072, type: 3}
   m_Follow: {fileID: 3180014547924719399, guid: fd6473e6e4c5d6e45973137f52545072, type: 3}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 12
+    OrthographicSize: 13
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -767,9 +699,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 594386512}
+  - component: {fileID: 594386514}
   - component: {fileID: 594386513}
   m_Layer: 0
-  m_Name: SpawnManager
+  m_Name: Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -787,7 +720,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 158697371}
   - {fileID: 215681265}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -801,10 +733,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 594386511}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 934d655061b820b49b12ab4598dffe38, type: 3}
+  m_Script: {fileID: 11500000, guid: 53d3181a066c5664c8db4c4a5437b091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 7970205845878994290, guid: fd6473e6e4c5d6e45973137f52545072, type: 3}
+  tileMap: {fileID: 883261407}
+  availablePlaces: []
+--- !u!114 &594386514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594386511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0f02844e9d2644bb9c05971913b977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: Small Enemy
+    prefab: {fileID: 7970205845878994290, guid: 3af1a63eb2b0e1f41adf307c5ad89ff0, type: 3}
+    size: 1
+    maxSize: 100
+  - tag: Big Enemy
+    prefab: {fileID: 7970205845878994290, guid: fa26e89cb7ee993448259021f5185c3a, type: 3}
+    size: 1
+    maxSize: 20
+  - tag: Exp
+    prefab: {fileID: 8084603002241973856, guid: 1794c4c0a44d15f49829b938c7281073, type: 3}
+    size: 1
+    maxSize: 70
 --- !u!1 &780772459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,7 +1278,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 13
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -1344,7 +1302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623405609}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: -7, z: -10}
+  m_LocalPosition: {x: 0.8, y: -7.99, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -39,7 +39,7 @@ public class Player : MonoBehaviour, IBaseEntity
 
     Gun[] guns;
 
-    public float timeToFireBulletHell = 5;
+    public float timeToFireBulletHell;
     
     void Start()
     {
@@ -149,13 +149,13 @@ public class Player : MonoBehaviour, IBaseEntity
 
         timeToFireBulletHell -= Time.deltaTime;
         guns[0].Shoot(Direction,Force);
-        if(timeToFireBulletHell <= 0)
+        if(timeToFireBulletHell <= 0 && guns.Length != 0)
         {
-            for(int i = 1;i < guns.Length; i++)
+            for (int i = 1;i < guns.Length; i++)
             {
                 guns[i].Shoot(Direction,Force);
             }
-            timeToFireBulletHell = 5;
+            timeToFireBulletHell = 0.1f;
         }
 
     }

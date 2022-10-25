@@ -23,8 +23,7 @@ MonoBehaviour:
   elementDamage: 0
   percentLifeSteel: 0
   attackRange: 0
-  minRange: 0.25
-  maxRange: 10
+  range: 50
   percentAttackSpeed: 0
   Speed: 1.5
   xpDrop: 10
