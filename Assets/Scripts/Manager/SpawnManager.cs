@@ -7,7 +7,7 @@ public class SpawnManager : MonoBehaviour
 {
     ObjectPooler objectPooler;
 
-    private float spawnTimer;
+    private float spawnEnemyTimer;
 
     [SerializeField]
     private Tilemap tileMap;
@@ -17,7 +17,7 @@ public class SpawnManager : MonoBehaviour
 
     void Start()
     {
-        spawnTimer = 0;
+        spawnEnemyTimer = 1;
         objectPooler = ObjectPooler.Instance;
         FindLocationsOfTiles();
     }
@@ -26,9 +26,9 @@ public class SpawnManager : MonoBehaviour
     {
         availablePlaces = new List<Vector3>(); // create a new list of vectors by doing...
 
-        for (int n = tileMap.cellBounds.xMin; n < tileMap.cellBounds.xMax + 39; n++) // scan from left to right for tiles
+        for (int n = tileMap.cellBounds.xMin; n < tileMap.cellBounds.xMax; n++) // scan from left to right for tiles
         {
-            for (int p = tileMap.cellBounds.yMax + 39; p >= tileMap.cellBounds.yMin; p--) // scan from bottom to top for tiles
+            for (int p = tileMap.cellBounds.yMax; p >= tileMap.cellBounds.yMin; p--) // scan from bottom to top for tiles
             {
                 Vector3Int localPlace = new Vector3Int(Random.Range(n,p), Random.Range(n,p), (int)tileMap.transform.position.y); // if you find a tile, record its position on the tile map grid
                 Vector3 place = tileMap.CellToWorld(localPlace); // convert this tile map grid coords to local space coords
@@ -43,31 +43,30 @@ public class SpawnManager : MonoBehaviour
 
     private void Update()
     {
-        spawnTimer -= Time.deltaTime;
+        spawnEnemyTimer -= Time.deltaTime;
     }
 
     private void FixedUpdate()
     {
-        InvokeRepeating("SpawnBoulder", spawnTimer, 0.5f);
-
-
+        InvokeRepeating("SpawnEnemy", spawnEnemyTimer, 0.5f);
     }
 
-    private void SpawnBoulder()
+    private void SpawnEnemy()
     {
-        if (spawnTimer <= 0)
+        if (spawnEnemyTimer <= 0)
         {
             for (int i = 0; i < availablePlaces.Count; i++)
             {
                 foreach(var pool in objectPooler.poolDictionary)
                 {
-                    objectPooler.SpawnFromPool(pool.Key,new Vector3(Random.Range(availablePlaces[i].x, availablePlaces[i].x + 0.5f), Random.Range(availablePlaces[i].y, availablePlaces[i].y + 0.5f), availablePlaces[i].z), Quaternion.identity);
-
+                    if (!pool.Key.Equals("Exp"))
+                    {
+                        objectPooler.SpawnFromPool(pool.Key, new Vector3(Random.Range(availablePlaces[i].x, availablePlaces[i].x + 0.5f), Random.Range(availablePlaces[i].y, availablePlaces[i].y + 0.5f), availablePlaces[i].z), Quaternion.identity);
+                    }
                 }
             }
-            spawnTimer = 2f;
+            spawnEnemyTimer = 1f;
         }
     
     }
-  
 }

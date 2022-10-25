@@ -13,7 +13,7 @@ public class Enemy :  MonoBehaviour,IBaseEntity
     public float BaseSpeed { get; set; } = 10;
     public float SmoothTime { get; set; } = 0.04f;
 
-
+    private const float PlayerRange = 30;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +24,7 @@ public class Enemy :  MonoBehaviour,IBaseEntity
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(target.position, transform.position) > enemyData.range)
+        if (Vector3.Distance(target.position, transform.position) > PlayerRange)
         {
             Debug.Log("Enemy Dieeeeeeeeeeeeeeeee");
             gameObject.SetActive(false);
