@@ -24,7 +24,7 @@ MonoBehaviour:
   percentLifeSteel: 0
   range: 10
   percentAttackSpeed: 0
-  speed: 4
+  speed: 2.5
   shootingRange: 10
   percentExpGains: 0
   percentCoinGains: 0

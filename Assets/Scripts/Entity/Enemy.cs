@@ -26,7 +26,6 @@ public class Enemy :  MonoBehaviour,IBaseEntity
     {
         if (Vector3.Distance(target.position, transform.position) > PlayerRange)
         {
-            Debug.Log("Enemy Dieeeeeeeeeeeeeeeee");
             gameObject.SetActive(false);
         }
         else if (Vector3.Distance(target.position,transform.position) <= enemyData.range)

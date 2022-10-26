@@ -26,9 +26,9 @@ public class SpawnManager : MonoBehaviour
     {
         availablePlaces = new List<Vector3>(); // create a new list of vectors by doing...
 
-        for (int n = tileMap.cellBounds.xMin; n < tileMap.cellBounds.xMax; n++) // scan from left to right for tiles
+        for (int n = tileMap.cellBounds.xMin; n < tileMap.cellBounds.xMax + (39 * 3); n++) // scan from left to right for tiles
         {
-            for (int p = tileMap.cellBounds.yMax; p >= tileMap.cellBounds.yMin; p--) // scan from bottom to top for tiles
+            for (int p = tileMap.cellBounds.yMax + (39 * 3); p >= tileMap.cellBounds.yMin; p--) // scan from bottom to top for tiles
             {
                 Vector3Int localPlace = new Vector3Int(Random.Range(n,p), Random.Range(n,p), (int)tileMap.transform.position.y); // if you find a tile, record its position on the tile map grid
                 Vector3 place = tileMap.CellToWorld(localPlace); // convert this tile map grid coords to local space coords

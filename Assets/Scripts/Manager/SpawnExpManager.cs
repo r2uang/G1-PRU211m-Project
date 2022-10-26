@@ -20,7 +20,7 @@ public class SpawnExpManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnExpTimer = 0.25f;
+        spawnExpTimer = 0.1f;
         objectPooler = ObjectPooler.Instance;
         minSpawnX = SpawnBorderSize;
         maxSpawnX = Screen.width - SpawnBorderSize;
@@ -38,7 +38,7 @@ public class SpawnExpManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        InvokeRepeating("SpawnExp", spawnExpTimer, 0.5f);
+        InvokeRepeating("SpawnExp", spawnExpTimer, 0.01f);
     }
 
     private void SpawnExp()
@@ -48,8 +48,12 @@ public class SpawnExpManager : MonoBehaviour
             Vector3 location = new Vector3(Random.Range(minSpawnX, maxSpawnX),Random.Range(minSpawnY, maxSpawnY),-cam.transform.position.z);
             Vector3 worldLocation = cam.ScreenToWorldPoint(location);
             objectPooler.SpawnFromPool("Exp", worldLocation, Quaternion.identity);
-            spawnExpTimer = 0.25f;
+            spawnExpTimer = 0.1f;
         }
+        //if(objectPooler.pools[2].size == objectPooler.pools[2].maxSize)
+        //{
+        //    objectPooler.pools[2].size = 50;
+        //}
 
     }
 }

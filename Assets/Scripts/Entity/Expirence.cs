@@ -7,12 +7,15 @@ public class Expirence : MonoBehaviour
     [SerializeField]
     private int Value;
     private Transform target;
-    private const int Range = 35;
+    private const int Range = 20;
+
+    private LevelManager levelManager;
 
     // Start is called before the first frame update
     void Start()
     {
         target = FindObjectOfType<Player>().transform;
+        levelManager = GameObject.FindGameObjectWithTag("Exp Bar").GetComponent<LevelManager>();
     }
 
     // Update is called once per frame
@@ -20,7 +23,6 @@ public class Expirence : MonoBehaviour
     {
         if (Vector3.Distance(target.position, transform.position) > Range)
         {
-            Debug.Log("Exp disappearrrrrrrrrr");
             gameObject.SetActive(false);
         }
     }
@@ -30,7 +32,7 @@ public class Expirence : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             gameObject.SetActive(false);
-            LevelManager.LevelUp(Value);
+            levelManager.LevelUp(Value);
         }
     }
 }
