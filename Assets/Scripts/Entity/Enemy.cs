@@ -24,11 +24,11 @@ public class Enemy :  MonoBehaviour,IBaseEntity
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(target.position, transform.position) > PlayerRange)
-        {
-            gameObject.SetActive(false);
-        }
-        else if (Vector3.Distance(target.position,transform.position) <= enemyData.range)
+        //if (Vector3.Distance(target.position, transform.position) > PlayerRange)
+        //{
+        //    Destroy(gameObject);
+        //}
+        if (Vector3.Distance(target.position,transform.position) <= enemyData.range)
         {
             Movement();
         }

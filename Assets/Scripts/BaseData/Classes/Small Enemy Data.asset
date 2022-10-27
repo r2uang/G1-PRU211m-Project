@@ -25,7 +25,7 @@ MonoBehaviour:
   attackRange: 0
   range: 50
   percentAttackSpeed: 0
-  Speed: 1
+  Speed: 2
   xpDrop: 10
   percentExpGains: 0
   percentCoinGains: 0

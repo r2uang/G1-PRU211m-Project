@@ -20,7 +20,7 @@ public class SpawnExpManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnExpTimer = 0.1f;
+        spawnExpTimer = 0.01f;
         objectPooler = ObjectPooler.Instance;
         minSpawnX = SpawnBorderSize;
         maxSpawnX = Screen.width - SpawnBorderSize;

@@ -67,7 +67,7 @@ public class LevelManager : MonoBehaviour
             ++level;
             currentExp -= totalXPToReachLevel;
             exp.value = currentExp;
-            totalXPToReachLevel = TotalXPToReachLevel(level);
+            totalXPToReachLevel += TotalXPToReachLevel(level);
             exp.maxValue = totalXPToReachLevel;
             UpdateLevel(level);
         }
