@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6831026ce765b1644ba409b6abfc9521, type: 3}
   m_Name: Player Data
   m_EditorClassIdentifier: 
-  className: Warrior
+  className: Player
   classDescription: Dump Class
-  HP: 14
+  HP: 100
   percentRegenHP: 5
   armor: 1
   percentDamage: 0
@@ -22,8 +22,9 @@ MonoBehaviour:
   rangeDamage: 10
   elementDamage: 0
   percentLifeSteel: 0
-  range: 0
+  range: 10
   percentAttackSpeed: 0
-  percentSpeed: 10
+  speed: 2.5
+  shootingRange: 10
   percentExpGains: 0
   percentCoinGains: 0

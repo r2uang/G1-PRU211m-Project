@@ -18,13 +18,12 @@ MonoBehaviour:
   percentRegenHP: 1
   armor: 4
   percentDamage: 0
-  meleeDamage: 0
+  meleeDamage: 3
   rangeDamage: 0
   elementDamage: 0
   percentLifeSteel: 0
-  range: 5
-  minRange: 0.25
-  maxRange: 10
+  attackRange: 0
+  range: 50
   percentAttackSpeed: 0
   Speed: 2
   xpDrop: 10

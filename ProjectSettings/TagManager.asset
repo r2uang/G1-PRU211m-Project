@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - InputControl
+  - Small Enemy
+  - Big Enemy
+  - Enemy
+  - Bullet
+  - Exp
+  - Exp Bar
   layers:
   - Default
   - TransparentFX

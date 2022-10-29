@@ -1,3 +1,4 @@
+
 using UnityEngine;
 namespace BaseData
 {
@@ -19,7 +20,9 @@ namespace BaseData
         public float range = 0;
         public float percentAttackSpeed = 0;
 
-        public float percentSpeed = 0;
+        public float speed = 0;
+
+        public float shootingRange = 0;
 
         public float percentExpGains = 0;
         public float percentCoinGains = 0;
