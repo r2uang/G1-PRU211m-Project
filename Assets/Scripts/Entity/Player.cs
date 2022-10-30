@@ -1,15 +1,12 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class Player : MonoBehaviour, IBaseEntity
 {
     public BaseData.PlayerDataManager playerData;
 
     private Rigidbody2D _body;
-    
+
     public float BaseSpeed { get; set; } = 5;
     public float SmoothTime { get; set; } = 0.04f;
 
@@ -40,7 +37,9 @@ public class Player : MonoBehaviour, IBaseEntity
     Gun[] guns;
 
     public float timeToFireBulletHell;
-    
+
+    public Animator animator;
+
     void Start()
     {
         guns = transform.GetComponentsInChildren<Gun>();
@@ -48,6 +47,7 @@ public class Player : MonoBehaviour, IBaseEntity
         Range = playerData.shootingRange;
         _body = GetComponent<Rigidbody2D>();
         joystick = GameObject.FindGameObjectWithTag("InputControl").GetComponent<FloatingJoystick>();
+        animator = GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
@@ -66,11 +66,11 @@ public class Player : MonoBehaviour, IBaseEntity
     private void FixedUpdate()
     {
         Target = GetClosestEnemy(GetTransformEnemies());
-        if(Target != null)
+        if (Target != null)
         {
             RaycastPosition();
         }
-        
+
     }
 
     private List<Transform> GetTransformEnemies()
@@ -78,11 +78,11 @@ public class Player : MonoBehaviour, IBaseEntity
         GameObject[] bigEnemies = GameObject.FindGameObjectsWithTag("Big Enemy");
         GameObject[] smallEnemies = GameObject.FindGameObjectsWithTag("Small Enemy");
         List<Transform> result = new List<Transform>();
-        foreach(var bigEnermy in bigEnemies)
+        foreach (var bigEnermy in bigEnemies)
         {
             result.Add(bigEnermy.transform);
         }
-        foreach(var smallEnermy in smallEnemies)
+        foreach (var smallEnermy in smallEnemies)
         {
             result.Add(smallEnermy.transform);
         }
@@ -117,7 +117,7 @@ public class Player : MonoBehaviour, IBaseEntity
         {
             if (rayInfo.collider.gameObject.tag == "Player")
             {
-                
+
                 if (!Detected)
                 {
                     Detected = true;
@@ -145,22 +145,22 @@ public class Player : MonoBehaviour, IBaseEntity
     {
         //GameObject BulletIns = Instantiate(Bullet, bulletPoint.position, Quaternion.identity);
         //BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * Force);
-        
+
 
         timeToFireBulletHell -= Time.deltaTime;
-        guns[0].Shoot(Direction,Force);
-        if(timeToFireBulletHell <= 0 && guns.Length != 0)
+        guns[0].Shoot(Direction, Force);
+        if (timeToFireBulletHell <= 0 && guns.Length != 0)
         {
-            for (int i = 1;i < guns.Length; i++)
+            for (int i = 1; i < guns.Length; i++)
             {
-                guns[i].Shoot(Direction,Force);
+                guns[i].Shoot(Direction, Force);
             }
             timeToFireBulletHell = 0.1f;
         }
 
     }
 
-    private void OnDrawGizmosSelected() 
+    private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, Range);
     }
@@ -194,12 +194,24 @@ public class Player : MonoBehaviour, IBaseEntity
             isMoving = true;
             moveDir = new Vector2(joystick.Horizontal, joystick.Vertical);
             _body.velocity = Vector3.SmoothDamp(_body.velocity, moveDir * BaseSpeed, ref velocitySmoothing, SmoothTime);
+            if (joystick.Direction.x < 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else if (joystick.Direction.x > 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            }
         }
         if (isMoving)
         {
+            animator.SetBool("isMoving", true);
             PlayerState = State.MOVEMENT;
-        } else
+        }
+        else
         {
+            animator.SetBool("isMoving", false);
             PlayerState = State.IDLE;
         }
     }
