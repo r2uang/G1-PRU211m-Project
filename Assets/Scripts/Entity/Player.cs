@@ -132,7 +132,6 @@ public class Player : MonoBehaviour, IBaseEntity
 
         if (Detected)
         {
-            //Gun.transform.up = Direction;
             if (Time.time > nextTimeToFire)
             {
                 nextTimeToFire = Time.time + 1 / FireRate;
@@ -142,10 +141,7 @@ public class Player : MonoBehaviour, IBaseEntity
     }
 
     private void Shoot()
-    {
-        //GameObject BulletIns = Instantiate(Bullet, bulletPoint.position, Quaternion.identity);
-        //BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * Force);
-
+    {   
 
         timeToFireBulletHell -= Time.deltaTime;
         guns[0].Shoot(Direction, Force);

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd140ddbb008e5945977ea8a066b78f6, type: 3}
   m_Name: Small Enemy Data
   m_EditorClassIdentifier: 
-  className: Small Enermy
+  className: Small Enemy
   classDescription: Dumb
   HP: 5
   percentRegenHP: 1
@@ -25,7 +25,7 @@ MonoBehaviour:
   attackRange: 0
   range: 50
   percentAttackSpeed: 0
-  Speed: 2
+  Speed: 1.5
   xpDrop: 10
   percentExpGains: 0
   percentCoinGains: 0

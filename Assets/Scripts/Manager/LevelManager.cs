@@ -38,6 +38,15 @@ public class LevelManager : MonoBehaviour
 
     private ObjectPooler objectPooler;
 
+    private GameObject skillChooser;
+
+
+    private void Awake()
+    {
+        skillChooser = GameObject.FindGameObjectWithTag("Skill Chooser");
+        skillChooser.SetActive(false);
+    }
+
     private void Start()
     {
         level = 1;
@@ -65,6 +74,7 @@ public class LevelManager : MonoBehaviour
 
     private void UpdateLevel(int level)
     {
+        StartCoroutine(ChooseSkill());
         this.level = level;
         text_1.text = this.level.ToString();
         text_2.text = (this.level + 1).ToString();
@@ -72,8 +82,15 @@ public class LevelManager : MonoBehaviour
         {
             objectPooler.pools[i].maxSize += (objectPooler.pools[i].maxSize * 10) / 100;
         }
-        smallEnemy.GetComponent<Enemy>().enemyData.Speed += (smallEnemy.GetComponent<Enemy>().enemyData.Speed * 10) / 100;
-        bigEnemy.GetComponent<Enemy>().enemyData.Speed += (bigEnemy.GetComponent<Enemy>().enemyData.Speed * 10) / 100;
+        smallEnemy.GetComponent<Enemy>().enemyData.Speed += (smallEnemy.GetComponent<Enemy>().enemyData.Speed * 2) / 100;
+        bigEnemy.GetComponent<Enemy>().enemyData.Speed += (bigEnemy.GetComponent<Enemy>().enemyData.Speed * 2) / 100;
+    }
+
+    private IEnumerator ChooseSkill()
+    {
+        skillChooser.GetComponent<SkillChooser>().IsChooseSkill = true;
+        skillChooser.GetComponent<SkillChooser>().ChooseSkill();
+        yield return null;
     }
 
     private float TotalXPToReachLevel(float level)

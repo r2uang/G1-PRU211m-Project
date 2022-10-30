@@ -74,8 +74,8 @@ public class SpawnEnemyManager : MonoBehaviour
 
                     if (!pool.Key.Equals("Exp"))
                     {
-                        objectPooler.SpawnFromPool(pool.Key, new Vector3(Random.Range(transform.position.x - 5, transform.position.x + 5),
-                            Random.Range(transform.position.y - 5, transform.position.y + 5), transform.position.z), spawnPoint.rotation);
+                        objectPooler.SpawnFromPool(pool.Key, new Vector3(Random.Range(transform.position.x, transform.position.x + 5),
+                            Random.Range(transform.position.y, transform.position.y + 5), transform.position.z), spawnPoint.rotation);
                     }
                     //GameObject instance = (GameObject)Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
                     //instance.transform.Rotate(Vector3.up, Random.Range(0f, 360f));

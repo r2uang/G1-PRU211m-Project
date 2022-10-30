@@ -15,6 +15,19 @@ public class Enemy :  MonoBehaviour,IBaseEntity
 
     private const float PlayerRange = 30;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        if (enemyData.className == "Big Enemy")
+        {
+            enemyData.Speed = 1;
+        }
+        if (enemyData.className == "Small Enemy")
+        {
+            enemyData.Speed = 1.5f;
+        }
+    }
+
     void Start()
     {
         _body = GetComponent<Rigidbody2D>();
