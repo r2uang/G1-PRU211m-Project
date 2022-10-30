@@ -74,7 +74,10 @@ public class LevelManager : MonoBehaviour
 
     private void UpdateLevel(int level)
     {
-        StartCoroutine(ChooseSkill());
+        if(level % 2 == 0)
+        {
+            StartCoroutine(ChooseSkill());
+        }
         this.level = level;
         text_1.text = this.level.ToString();
         text_2.text = (this.level + 1).ToString();
@@ -88,7 +91,6 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator ChooseSkill()
     {
-        skillChooser.GetComponent<SkillChooser>().IsChooseSkill = true;
         skillChooser.GetComponent<SkillChooser>().ChooseSkill();
         yield return null;
     }
