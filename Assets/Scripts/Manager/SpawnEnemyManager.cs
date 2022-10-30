@@ -17,7 +17,6 @@ public class SpawnEnemyManager : MonoBehaviour
         objectPooler = ObjectPooler.Instance;
         // Call the Spawn function after a delay of the spawnTime and then continue to call after the same amount of time.
         nextSpawn = Time.time + spawnTime;
-        Debug.Log("I reached this point 1");
     }
 
     private void FixedUpdate()
@@ -40,8 +39,6 @@ public class SpawnEnemyManager : MonoBehaviour
             {
                 near.Add(spawnPoint);
             }
-            Debug.Log("I reached this point 2");
-            Debug.Log(near.Count);
         }
 
 
@@ -65,8 +62,6 @@ public class SpawnEnemyManager : MonoBehaviour
 
                 // if we dont have any more points. break... // new line: Break;
                 if (near.Count == 0) break;
-                Debug.Log("I reached this point 3");
-                Debug.Log(near.Count);
                 // end the loop... }
             }
 
@@ -76,8 +71,6 @@ public class SpawnEnemyManager : MonoBehaviour
                 foreach (Transform spawnPoint in pointsToSpawn)
                 {
                     // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
-                    Debug.Log("I reached this point 4");
-                    Debug.Log(near.Count);
 
                     if (!pool.Key.Equals("Exp"))
                     {
@@ -86,8 +79,6 @@ public class SpawnEnemyManager : MonoBehaviour
                     }
                     //GameObject instance = (GameObject)Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
                     //instance.transform.Rotate(Vector3.up, Random.Range(0f, 360f));
-                    Debug.Log("I reached this point 5");
-                    Debug.Log(near.Count);
                 }
             }
         }

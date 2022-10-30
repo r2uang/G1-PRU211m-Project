@@ -1059,6 +1059,8 @@ MonoBehaviour:
   text_2: {fileID: 1963300449}
   circle_1: {fileID: 709168542}
   circle_2: {fileID: 2139426966}
+  smallEnemy: {fileID: 7970205845878994290, guid: 3af1a63eb2b0e1f41adf307c5ad89ff0, type: 3}
+  bigEnemy: {fileID: 7970205845878994290, guid: fa26e89cb7ee993448259021f5185c3a, type: 3}
   exp: {fileID: 1898704870}
 --- !u!1 &1187774371
 GameObject:

@@ -7,9 +7,6 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
 
-    //private static float xpIncrementPerLevel = 0;
-    //private static float Level = 1;
-    //private static float totalXPToReachLevel = TotalXPToReachLevel(1);
     private const float EXP_VALUE = 100;
 
     [SerializeField]
@@ -23,6 +20,12 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField]
     private Image circle_2;
+
+    [SerializeField]
+    private GameObject smallEnemy;
+
+    [SerializeField]
+    private GameObject bigEnemy;
 
     private int level;
 
@@ -44,19 +47,6 @@ public class LevelManager : MonoBehaviour
         totalXPToReachLevel = TotalXPToReachLevel(level);
         exp.maxValue = totalXPToReachLevel;
     }
-
-    // Update is called once per frame
-
-    //public static void LevelUp(int value)
-    //{
-    //    xpIncrementPerLevel += value;
-    //    if (xpIncrementPerLevel >= totalXPToReachLevel)
-    //    {
-    //        ++Level;
-    //        xpIncrementPerLevel -= value;
-    //        totalXPToReachLevel = TotalXPToReachLevel(Level);
-    //    }
-    //}
 
     public void LevelUp(float expValue)
     {
@@ -82,6 +72,8 @@ public class LevelManager : MonoBehaviour
         {
             objectPooler.pools[i].maxSize += (objectPooler.pools[i].maxSize * 10) / 100;
         }
+        smallEnemy.GetComponent<Enemy>().enemyData.Speed += (smallEnemy.GetComponent<Enemy>().enemyData.Speed * 10) / 100;
+        bigEnemy.GetComponent<Enemy>().enemyData.Speed += (bigEnemy.GetComponent<Enemy>().enemyData.Speed * 10) / 100;
     }
 
     private float TotalXPToReachLevel(float level)
