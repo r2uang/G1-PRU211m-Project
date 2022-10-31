@@ -48,7 +48,7 @@ public class SpawnExpManager : MonoBehaviour
             Vector3 location = new Vector3(Random.Range(minSpawnX, maxSpawnX),Random.Range(minSpawnY, maxSpawnY),-cam.transform.position.z);
             Vector3 worldLocation = cam.ScreenToWorldPoint(location);
             objectPooler.SpawnFromPool("Exp", worldLocation, Quaternion.identity);
-            spawnExpTimer = 0.1f;
+            spawnExpTimer = 0.05f;
         }
         //if(objectPooler.pools[2].size == objectPooler.pools[2].maxSize)
         //{
