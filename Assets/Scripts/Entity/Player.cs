@@ -38,7 +38,22 @@ public class Player : MonoBehaviour, IBaseEntity
 
     public float timeToFireBulletHell;
 
+    public float saveTimeToFireBulletHell;
+
+    public bool isFireBulletHell;
+
+    public int gunLength;
+
     public Animator animator;
+
+
+    private void Awake()
+    {
+        SkillManager.instance.player = gameObject.GetComponent<Player>();
+        playerData.HP = 100;
+        playerData.speed = 5;
+        playerData.armor = 0;
+    }
 
     void Start()
     {
@@ -53,6 +68,7 @@ public class Player : MonoBehaviour, IBaseEntity
     void Update()
     {
         Movement();
+        timeToFireBulletHell -= Time.deltaTime;
         switch (PlayerState)
         {
             case State.MOVEMENT:
@@ -135,25 +151,28 @@ public class Player : MonoBehaviour, IBaseEntity
             if (Time.time > nextTimeToFire)
             {
                 nextTimeToFire = Time.time + 1 / FireRate;
+                if (isFireBulletHell && this.timeToFireBulletHell <= 0)
+                {
+                    Debug.Log(saveTimeToFireBulletHell);
+                    ShootBulletHell();
+                    timeToFireBulletHell = saveTimeToFireBulletHell;
+                }
                 Shoot();
             }
         }
     }
 
     private void Shoot()
-    {   
-
-        timeToFireBulletHell -= Time.deltaTime;
+    {
         guns[0].Shoot(Direction, Force);
-        if (timeToFireBulletHell <= 0 && guns.Length != 0)
-        {
-            for (int i = 1; i < guns.Length; i++)
-            {
-                guns[i].Shoot(Direction, Force);
-            }
-            timeToFireBulletHell = 0.1f;
-        }
+    }
 
+    private void ShootBulletHell()
+    {
+        for (int i = 0; i < gunLength; i++)
+        {
+            guns[i].Shoot(Direction, Force);
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -164,32 +183,12 @@ public class Player : MonoBehaviour, IBaseEntity
     public void Movement()
     {
         bool isMoving = false;
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            isMoving = true;
-            _body.velocity = Vector3.SmoothDamp(_body.velocity, Vector3.left * BaseSpeed, ref velocitySmoothing, SmoothTime);
-        }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            isMoving = true;
-            _body.velocity = Vector3.SmoothDamp(_body.velocity, Vector3.right * BaseSpeed, ref velocitySmoothing, SmoothTime);
-        }
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-        {
-            isMoving = true;
-            _body.velocity = Vector3.SmoothDamp(_body.velocity, Vector3.up * BaseSpeed, ref velocitySmoothing, SmoothTime);
-        }
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-        {
-            isMoving = true;
-            _body.velocity = Vector3.SmoothDamp(_body.velocity, Vector3.down * BaseSpeed, ref velocitySmoothing, SmoothTime);
-        }
 
         if (joystick && joystick.Horizontal != 0 || joystick.Vertical != 0)
         {
             isMoving = true;
             moveDir = new Vector2(joystick.Horizontal, joystick.Vertical);
-            _body.velocity = Vector3.SmoothDamp(_body.velocity, moveDir * BaseSpeed, ref velocitySmoothing, SmoothTime);
+            _body.velocity = Vector3.SmoothDamp(_body.velocity, moveDir * playerData.speed, ref velocitySmoothing, SmoothTime);
             if (joystick.Direction.x < 0)
             {
                 transform.rotation = Quaternion.Euler(0, 180, 0);

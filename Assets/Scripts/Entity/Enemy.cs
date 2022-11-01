@@ -45,6 +45,10 @@ public class Enemy :  MonoBehaviour,IBaseEntity
         {
             Movement();
         }
+        //else
+        //{
+        //    gameObject.SetActive(false);
+        //}
         
         
     }

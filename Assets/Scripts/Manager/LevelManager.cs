@@ -76,6 +76,8 @@ public class LevelManager : MonoBehaviour
     {
         if(level % 2 == 0)
         {
+            smallEnemy.GetComponent<Enemy>().enemyData.Speed += (smallEnemy.GetComponent<Enemy>().enemyData.Speed * 2) / 100;
+            bigEnemy.GetComponent<Enemy>().enemyData.Speed += (bigEnemy.GetComponent<Enemy>().enemyData.Speed * 2) / 100;
             StartCoroutine(ChooseSkill());
         }
         this.level = level;
@@ -85,8 +87,6 @@ public class LevelManager : MonoBehaviour
         {
             objectPooler.pools[i].maxSize += (objectPooler.pools[i].maxSize * 10) / 100;
         }
-        smallEnemy.GetComponent<Enemy>().enemyData.Speed += (smallEnemy.GetComponent<Enemy>().enemyData.Speed * 2) / 100;
-        bigEnemy.GetComponent<Enemy>().enemyData.Speed += (bigEnemy.GetComponent<Enemy>().enemyData.Speed * 2) / 100;
     }
 
     private IEnumerator ChooseSkill()

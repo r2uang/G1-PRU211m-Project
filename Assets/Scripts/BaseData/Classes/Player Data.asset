@@ -16,15 +16,15 @@ MonoBehaviour:
   classDescription: Dump Class
   HP: 100
   percentRegenHP: 5
-  armor: 1
+  armor: 0
   percentDamage: 0
   meleeDamage: 8
   rangeDamage: 10
   elementDamage: 0
   percentLifeSteel: 0
-  range: 10
+  range: 1
   percentAttackSpeed: 0
-  speed: 0
+  speed: 5
   shootingRange: 1
   percentExpGains: 0
   percentCoinGains: 0

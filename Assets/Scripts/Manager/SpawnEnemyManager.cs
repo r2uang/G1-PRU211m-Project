@@ -12,7 +12,7 @@ public class SpawnEnemyManager : MonoBehaviour
     //public Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
     //private float nextSpawn = 0;
 
-    const int SpawnBorderSize = 50;
+    const int SpawnBorderSize = 20;
     int minSpawnX;
     int maxSpawnX;
     int minSpawnY;
@@ -49,14 +49,14 @@ public class SpawnEnemyManager : MonoBehaviour
         //    Spawn();
         //    nextSpawn += spawnTime;
         //}
-        InvokeRepeating("SpawnEnemy", spawnTime, 0.5f);
+        InvokeRepeating("SpawnEnemy", spawnTime, 1f);
     }
 
     private void SpawnEnemy()
     {
         if (spawnTime <= 0)
         {
-            Vector3 location = new Vector3(Random.Range(minSpawnX - 5, maxSpawnX + 5), Random.Range(minSpawnY - 2, maxSpawnY + 2), -cam.transform.position.z);
+            Vector3 location = new Vector3(Random.Range(minSpawnX - 10, maxSpawnX + 10), Random.Range(minSpawnY - 5, maxSpawnY + 5), -cam.transform.position.z);
             Vector3 worldLocation = cam.ScreenToWorldPoint(location);
             foreach (var pool in objectPooler.poolDictionary)
             {
@@ -66,7 +66,7 @@ public class SpawnEnemyManager : MonoBehaviour
                 }
             }
             objectPooler.SpawnFromPool("Exp", worldLocation, Quaternion.identity);
-            spawnTime = 0.5f;
+            spawnTime = 0.75f;
         }
         //if(objectPooler.pools[2].size == objectPooler.pools[2].maxSize)
         //{
