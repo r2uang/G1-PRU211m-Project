@@ -901,6 +901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 850289cf636fdec4295764aba8a01556, type: 2}
   joystick: {fileID: 8170153791668043265, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+  pauseMenuScreen: {fileID: 1802595554520927394, guid: ab00347a22210984b95198e66e295ba7, type: 3}
   FireRate: 1
   nextTimeToFire: 0
   Force: 150

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour, IBaseEntity
 {
@@ -13,6 +14,8 @@ public class Player : MonoBehaviour, IBaseEntity
     private Vector3 velocitySmoothing;
 
     public FloatingJoystick joystick;
+
+    public GameObject pauseMenuScreen;
     private State PlayerState { get; set; } = State.IDLE;
 
     private Vector3 moveDir;
@@ -45,7 +48,6 @@ public class Player : MonoBehaviour, IBaseEntity
     public int gunLength;
 
     public Animator animator;
-
 
     private void Awake()
     {
@@ -221,6 +223,22 @@ public class Player : MonoBehaviour, IBaseEntity
         MOVEMENT = 1,
     }
 
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        pauseMenuScreen.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        pauseMenuScreen.SetActive(false);
+    }
+
+    public void GoToMenu(int index)
+    {
+        SceneManager.LoadScene(index);
+    }
     //private void OnCollisionEnter2D(Collision2D collision)
     //{
     //    if (collision.gameObject.tag == "Enemy")
