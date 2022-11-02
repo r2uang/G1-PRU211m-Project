@@ -32,6 +32,11 @@ public class SkillManager : MonoBehaviour
     private void Start()
     {
         skillChooser = gameObject.GetComponent<SkillChooser>();
+        
+    }
+
+    private void Update()
+    {
         UpdateSkillImage();
     }
 
@@ -56,7 +61,7 @@ public class SkillManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Skil ${activeSkill.skillName} is already upgraded!!");
+            Debug.Log($"Skil {activeSkill.skillName} is already upgraded!!");
         }
     }
 
@@ -76,7 +81,9 @@ public class SkillManager : MonoBehaviour
                 player.playerData.armor += 5;
                 Debug.Log("Upgrades");
                 break;
-            case "Rapid  fire":
+            case "Rapid Fire":
+                player.isRapidFire = true;
+                player.saveTimeToRapidFire = 10f;
                 Debug.Log("Upgrades");
                 break;
             case "Bullet Hell":

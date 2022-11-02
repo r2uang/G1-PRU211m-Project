@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -42,6 +43,12 @@ public class Player : MonoBehaviour, IBaseEntity
 
     public bool isFireBulletHell;
 
+    public float timeToRapidFire;
+
+    public float saveTimeToRapidFire;
+
+    public bool isRapidFire;
+
     public int gunLength;
 
     public Animator animator;
@@ -69,6 +76,7 @@ public class Player : MonoBehaviour, IBaseEntity
     {
         Movement();
         timeToFireBulletHell -= Time.deltaTime;
+        timeToRapidFire -= Time.deltaTime;
         switch (PlayerState)
         {
             case State.MOVEMENT:
@@ -150,15 +158,28 @@ public class Player : MonoBehaviour, IBaseEntity
         {
             if (Time.time > nextTimeToFire)
             {
-                nextTimeToFire = Time.time + 1 / FireRate;
+                nextTimeToFire = Time.time + FireRate;
                 if (isFireBulletHell && this.timeToFireBulletHell <= 0)
                 {
                     Debug.Log(saveTimeToFireBulletHell);
                     ShootBulletHell();
                     timeToFireBulletHell = saveTimeToFireBulletHell;
                 }
+                else if(isRapidFire && this.timeToRapidFire <= 0)
+                {
+                    ShootRapidFire();
+                    timeToRapidFire = saveTimeToRapidFire;
+                }
                 Shoot();
             }
+        }
+    }
+
+    private void ShootRapidFire()
+    {
+       for(int i = 0;i < 3; i++)
+        {
+            Shoot();
         }
     }
 
