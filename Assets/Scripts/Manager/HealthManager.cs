@@ -7,11 +7,19 @@ public class HealthManager : MonoBehaviour
     private Player player;
     public float currentHealth;
     public float maxHealth;
-    [SerializeField]
-    private float timeToHealth = 5f;
+    private float timeToHealth;
+    public float saveTimeToHealth;
+    public bool isRegen = false;
+
+    private void Awake()
+    {
+        SkillManager.instance.healthManager = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        timeToHealth = 3f;
         player = GetComponent<Player>();
         maxHealth = player.playerData.HP;
         currentHealth = player.playerData.HP;
@@ -20,13 +28,22 @@ public class HealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeToHealth -= Time.deltaTime;
-        if(timeToHealth <= 0 && currentHealth <= maxHealth)
+        this.timeToHealth -= Time.deltaTime;
+        if (isRegen)
         {
-            currentHealth += player.playerData.percentRegenHP;
-            timeToHealth = 5f;
+            Regen();
         }
     }
+
+    public void Regen()
+    {
+        if (this.timeToHealth <= 0 && currentHealth <= maxHealth)
+        {
+            currentHealth += player.playerData.percentRegenHP;
+            this.timeToHealth = saveTimeToHealth;
+        }
+    }
+
     public void HurtPlayer(float damageReceive)
     {
         currentHealth -= damageReceive - player.playerData.armor;

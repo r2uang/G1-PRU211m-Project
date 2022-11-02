@@ -7,9 +7,6 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
 
-    //private static float xpIncrementPerLevel = 0;
-    //private static float Level = 1;
-    //private static float totalXPToReachLevel = TotalXPToReachLevel(1);
     private const float EXP_VALUE = 100;
 
     [SerializeField]
@@ -24,6 +21,12 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private Image circle_2;
 
+    [SerializeField]
+    private GameObject smallEnemy;
+
+    [SerializeField]
+    private GameObject bigEnemy;
+
     private int level;
 
     private float currentExp;
@@ -35,6 +38,15 @@ public class LevelManager : MonoBehaviour
 
     private ObjectPooler objectPooler;
 
+    private GameObject skillChooser;
+
+
+    private void Awake()
+    {
+        skillChooser = GameObject.FindGameObjectWithTag("Skill Chooser");
+        skillChooser.SetActive(false);
+    }
+
     private void Start()
     {
         level = 1;
@@ -44,19 +56,6 @@ public class LevelManager : MonoBehaviour
         totalXPToReachLevel = TotalXPToReachLevel(level);
         exp.maxValue = totalXPToReachLevel;
     }
-
-    // Update is called once per frame
-
-    //public static void LevelUp(int value)
-    //{
-    //    xpIncrementPerLevel += value;
-    //    if (xpIncrementPerLevel >= totalXPToReachLevel)
-    //    {
-    //        ++Level;
-    //        xpIncrementPerLevel -= value;
-    //        totalXPToReachLevel = TotalXPToReachLevel(Level);
-    //    }
-    //}
 
     public void LevelUp(float expValue)
     {
@@ -75,6 +74,12 @@ public class LevelManager : MonoBehaviour
 
     private void UpdateLevel(int level)
     {
+        if(level % 2 == 0)
+        {
+            smallEnemy.GetComponent<Enemy>().enemyData.Speed += (smallEnemy.GetComponent<Enemy>().enemyData.Speed * 2) / 100;
+            bigEnemy.GetComponent<Enemy>().enemyData.Speed += (bigEnemy.GetComponent<Enemy>().enemyData.Speed * 2) / 100;
+            StartCoroutine(ChooseSkill());
+        }
         this.level = level;
         text_1.text = this.level.ToString();
         text_2.text = (this.level + 1).ToString();
@@ -82,6 +87,12 @@ public class LevelManager : MonoBehaviour
         {
             objectPooler.pools[i].maxSize += (objectPooler.pools[i].maxSize * 10) / 100;
         }
+    }
+
+    private IEnumerator ChooseSkill()
+    {
+        skillChooser.GetComponent<SkillChooser>().ChooseSkill();
+        yield return null;
     }
 
     private float TotalXPToReachLevel(float level)
