@@ -756,8 +756,8 @@ MonoBehaviour:
   - {fileID: 854048444}
   - {fileID: 1045872675}
   activeSkill: {fileID: 0}
-  player: {fileID: 0}
-  healthManager: {fileID: 0}
+  player: {fileID: 7530626677350129736, guid: fd6473e6e4c5d6e45973137f52545072, type: 3}
+  healthManager: {fileID: 1157617214888958755, guid: fd6473e6e4c5d6e45973137f52545072, type: 3}
 --- !u!1 &331162151
 GameObject:
   m_ObjectHideFlags: 0

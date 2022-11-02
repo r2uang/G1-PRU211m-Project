@@ -169,6 +169,7 @@ public class Player : MonoBehaviour, IBaseEntity
                 {
                     ShootRapidFire();
                     timeToRapidFire = saveTimeToRapidFire;
+                    CancelInvoke();
                 }
                 Shoot();
             }
@@ -177,10 +178,7 @@ public class Player : MonoBehaviour, IBaseEntity
 
     private void ShootRapidFire()
     {
-       for(int i = 0;i < 3; i++)
-        {
-            Shoot();
-        }
+        InvokeRepeating("Shoot", 1f, 1f);
     }
 
     private void Shoot()
