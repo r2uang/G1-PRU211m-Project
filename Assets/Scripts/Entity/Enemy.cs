@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy :  MonoBehaviour,IBaseEntity
+public class Enemy : MonoBehaviour, IBaseEntity
 {
     [SerializeField]
     private GameObject expPrefab;
@@ -31,7 +29,14 @@ public class Enemy :  MonoBehaviour,IBaseEntity
     void Start()
     {
         _body = GetComponent<Rigidbody2D>();
-        target = FindObjectOfType<Player>().transform;
+        if (FindObjectOfType<Player>() != null)
+        {
+            target = FindObjectOfType<Player>().transform;
+        }
+        else
+        {
+            target = null;
+        }
     }
 
     // Update is called once per frame
@@ -41,30 +46,38 @@ public class Enemy :  MonoBehaviour,IBaseEntity
         //{
         //    Destroy(gameObject);
         //}
-        if (Vector3.Distance(target.position,transform.position) <= enemyData.range)
+        if (target == null)
         {
-            Movement();
+            gameObject.SetActive(false);
         }
+        else
+        {
+            if (Vector3.Distance(target.position, transform.position) <= enemyData.range)
+            {
+                Movement();
+            }
+        }
+
         //else
         //{
         //    gameObject.SetActive(false);
         //}
-        
-        
+
+
     }
 
     public void Movement()
     {
-        transform.position = Vector3.MoveTowards(transform.position,target.position, enemyData.Speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target.position, enemyData.Speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.tag == "Bullet")
         {
             gameObject.SetActive(false);
             Destroy(collision.gameObject);
-            Instantiate(expPrefab , transform.position, Quaternion.identity);
+            Instantiate(expPrefab, transform.position, Quaternion.identity);
         }
     }
 

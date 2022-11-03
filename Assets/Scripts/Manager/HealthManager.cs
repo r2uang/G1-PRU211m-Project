@@ -8,7 +8,6 @@ public class HealthManager : MonoBehaviour
     private float timeToHealth;
     public float saveTimeToHealth;
     public bool isRegen = false;
-
     private void Awake()
     {
         SkillManager.instance.healthManager = this;
@@ -45,9 +44,10 @@ public class HealthManager : MonoBehaviour
     public void HurtPlayer(float damageReceive)
     {
         currentHealth -= damageReceive - player.playerData.armor;
-        if (currentHealth <= 0)
+        if (currentHealth <= 99)
         {
             gameObject.SetActive(false);
+            PlayerManager.isGameOver = true;
         }
     }
 }
