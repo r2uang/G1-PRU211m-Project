@@ -11,4 +11,6 @@ public class Skill : MonoBehaviour
     public string skillDes;
     public int numberOfChoose = 0;
     public bool isUpgrade = false;
+
+    public GameObject[] stars;
 }

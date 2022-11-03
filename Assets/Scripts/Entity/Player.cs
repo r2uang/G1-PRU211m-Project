@@ -43,12 +43,6 @@ public class Player : MonoBehaviour, IBaseEntity
 
     public bool isFireBulletHell;
 
-    public float timeToRapidFire;
-
-    public float saveTimeToRapidFire;
-
-    public bool isRapidFire;
-
     public int gunLength;
 
     public Animator animator;
@@ -76,7 +70,6 @@ public class Player : MonoBehaviour, IBaseEntity
     {
         Movement();
         timeToFireBulletHell -= Time.deltaTime;
-        timeToRapidFire -= Time.deltaTime;
         switch (PlayerState)
         {
             case State.MOVEMENT:
@@ -165,20 +158,9 @@ public class Player : MonoBehaviour, IBaseEntity
                     ShootBulletHell();
                     timeToFireBulletHell = saveTimeToFireBulletHell;
                 }
-                else if(isRapidFire && this.timeToRapidFire <= 0)
-                {
-                    ShootRapidFire();
-                    timeToRapidFire = saveTimeToRapidFire;
-                    CancelInvoke();
-                }
                 Shoot();
             }
         }
-    }
-
-    private void ShootRapidFire()
-    {
-        InvokeRepeating("Shoot", 1f, 1f);
     }
 
     private void Shoot()

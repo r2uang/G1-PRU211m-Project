@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677651108995739369}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.97, y: 0.05, z: -0.0005051237}
+  m_LocalPosition: {x: 1.12, y: -0.04, z: -0.0005051237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129376729025318068}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.94, y: 0.11, z: -0.0005051237}
+  m_LocalPosition: {x: 0.94, y: 0.02, z: -0.0005051237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -560,7 +560,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6271255885206427335}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.51, y: -0.31, z: -0.0005051237}
+  m_LocalPosition: {x: 1.16, y: -0.55, z: -0.0005051237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -822,7 +822,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7660367600641385274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.91, y: 0.31, z: -0.0005051237}
+  m_LocalPosition: {x: 2.34, y: 0.3, z: -0.0005051237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -901,15 +901,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 850289cf636fdec4295764aba8a01556, type: 2}
   joystick: {fileID: 8170153791668043265, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
-  FireRate: 1
+  FireRate: 1.5
   nextTimeToFire: 0
   Force: 200
   timeToFireBulletHell: 0
   saveTimeToFireBulletHell: 0
   isFireBulletHell: 0
-  timeToRapidFire: 0
-  saveTimeToRapidFire: 0
-  isRapidFire: 0
   gunLength: 4
   animator: {fileID: 0}
 --- !u!114 &1157617214888958755

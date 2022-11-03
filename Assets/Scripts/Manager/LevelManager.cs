@@ -78,8 +78,8 @@ public class LevelManager : MonoBehaviour
         {
             smallEnemy.GetComponent<Enemy>().enemyData.Speed += (smallEnemy.GetComponent<Enemy>().enemyData.Speed * 2) / 100;
             bigEnemy.GetComponent<Enemy>().enemyData.Speed += (bigEnemy.GetComponent<Enemy>().enemyData.Speed * 2) / 100;
-            StartCoroutine(ChooseSkill());
         }
+        StartCoroutine(ChooseSkill());
         this.level = level;
         text_1.text = this.level.ToString();
         text_2.text = (this.level + 1).ToString();
