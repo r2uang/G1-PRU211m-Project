@@ -11,6 +11,7 @@ TagManager:
   - Bullet
   - Exp
   - Exp Bar
+  - Skill Chooser
   layers:
   - Default
   - TransparentFX

@@ -1,15 +1,13 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class Player : MonoBehaviour, IBaseEntity
 {
     public BaseData.PlayerDataManager playerData;
 
     private Rigidbody2D _body;
-    
+
     public float BaseSpeed { get; set; } = 5;
     public float SmoothTime { get; set; } = 0.04f;
 
@@ -40,7 +38,24 @@ public class Player : MonoBehaviour, IBaseEntity
     Gun[] guns;
 
     public float timeToFireBulletHell;
-    
+
+    public float saveTimeToFireBulletHell;
+
+    public bool isFireBulletHell;
+
+    public int gunLength;
+
+    public Animator animator;
+
+
+    private void Awake()
+    {
+        SkillManager.instance.player = gameObject.GetComponent<Player>();
+        playerData.HP = 100;
+        playerData.speed = 5;
+        playerData.armor = 0;
+    }
+
     void Start()
     {
         guns = transform.GetComponentsInChildren<Gun>();
@@ -48,11 +63,13 @@ public class Player : MonoBehaviour, IBaseEntity
         Range = playerData.shootingRange;
         _body = GetComponent<Rigidbody2D>();
         joystick = GameObject.FindGameObjectWithTag("InputControl").GetComponent<FloatingJoystick>();
+        animator = GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
     {
         Movement();
+        timeToFireBulletHell -= Time.deltaTime;
         switch (PlayerState)
         {
             case State.MOVEMENT:
@@ -66,11 +83,11 @@ public class Player : MonoBehaviour, IBaseEntity
     private void FixedUpdate()
     {
         Target = GetClosestEnemy(GetTransformEnemies());
-        if(Target != null)
+        if (Target != null)
         {
             RaycastPosition();
         }
-        
+
     }
 
     private List<Transform> GetTransformEnemies()
@@ -78,11 +95,11 @@ public class Player : MonoBehaviour, IBaseEntity
         GameObject[] bigEnemies = GameObject.FindGameObjectsWithTag("Big Enemy");
         GameObject[] smallEnemies = GameObject.FindGameObjectsWithTag("Small Enemy");
         List<Transform> result = new List<Transform>();
-        foreach(var bigEnermy in bigEnemies)
+        foreach (var bigEnermy in bigEnemies)
         {
             result.Add(bigEnermy.transform);
         }
-        foreach(var smallEnermy in smallEnemies)
+        foreach (var smallEnermy in smallEnemies)
         {
             result.Add(smallEnermy.transform);
         }
@@ -117,7 +134,7 @@ public class Player : MonoBehaviour, IBaseEntity
         {
             if (rayInfo.collider.gameObject.tag == "Player")
             {
-                
+
                 if (!Detected)
                 {
                     Detected = true;
@@ -132,10 +149,15 @@ public class Player : MonoBehaviour, IBaseEntity
 
         if (Detected)
         {
-            //Gun.transform.up = Direction;
             if (Time.time > nextTimeToFire)
             {
-                nextTimeToFire = Time.time + 1 / FireRate;
+                nextTimeToFire = Time.time + FireRate;
+                if (isFireBulletHell && this.timeToFireBulletHell <= 0)
+                {
+                    Debug.Log(saveTimeToFireBulletHell);
+                    ShootBulletHell();
+                    timeToFireBulletHell = saveTimeToFireBulletHell;
+                }
                 Shoot();
             }
         }
@@ -143,24 +165,18 @@ public class Player : MonoBehaviour, IBaseEntity
 
     private void Shoot()
     {
-        //GameObject BulletIns = Instantiate(Bullet, bulletPoint.position, Quaternion.identity);
-        //BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * Force);
-        
-
-        timeToFireBulletHell -= Time.deltaTime;
-        guns[0].Shoot(Direction,Force);
-        if(timeToFireBulletHell <= 0 && guns.Length != 0)
-        {
-            for (int i = 1;i < guns.Length; i++)
-            {
-                guns[i].Shoot(Direction,Force);
-            }
-            timeToFireBulletHell = 0.1f;
-        }
-
+        guns[0].Shoot(Direction, Force);
     }
 
-    private void OnDrawGizmosSelected() 
+    private void ShootBulletHell()
+    {
+        for (int i = 0; i < gunLength; i++)
+        {
+            guns[i].Shoot(Direction, Force);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, Range);
     }
@@ -168,38 +184,30 @@ public class Player : MonoBehaviour, IBaseEntity
     public void Movement()
     {
         bool isMoving = false;
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            isMoving = true;
-            _body.velocity = Vector3.SmoothDamp(_body.velocity, Vector3.left * BaseSpeed, ref velocitySmoothing, SmoothTime);
-        }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            isMoving = true;
-            _body.velocity = Vector3.SmoothDamp(_body.velocity, Vector3.right * BaseSpeed, ref velocitySmoothing, SmoothTime);
-        }
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-        {
-            isMoving = true;
-            _body.velocity = Vector3.SmoothDamp(_body.velocity, Vector3.up * BaseSpeed, ref velocitySmoothing, SmoothTime);
-        }
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-        {
-            isMoving = true;
-            _body.velocity = Vector3.SmoothDamp(_body.velocity, Vector3.down * BaseSpeed, ref velocitySmoothing, SmoothTime);
-        }
 
         if (joystick && joystick.Horizontal != 0 || joystick.Vertical != 0)
         {
             isMoving = true;
             moveDir = new Vector2(joystick.Horizontal, joystick.Vertical);
-            _body.velocity = Vector3.SmoothDamp(_body.velocity, moveDir * BaseSpeed, ref velocitySmoothing, SmoothTime);
+            _body.velocity = Vector3.SmoothDamp(_body.velocity, moveDir * playerData.speed, ref velocitySmoothing, SmoothTime);
+            if (joystick.Direction.x < 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else if (joystick.Direction.x > 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            }
         }
         if (isMoving)
         {
+            animator.SetBool("isMoving", true);
             PlayerState = State.MOVEMENT;
-        } else
+        }
+        else
         {
+            animator.SetBool("isMoving", false);
             PlayerState = State.IDLE;
         }
     }
