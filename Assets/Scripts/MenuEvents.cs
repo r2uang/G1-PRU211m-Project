@@ -5,7 +5,7 @@ public class MenuEvents : MonoBehaviour
 {
     public void LoadGame(int index)
     {
-        SceneManager.LoadScene(index);
+        SceneManager.LoadSceneAsync(index);
     }
 
 }

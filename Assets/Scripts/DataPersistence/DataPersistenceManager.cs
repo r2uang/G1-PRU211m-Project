@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 
 public class DataPersistenceManager : MonoBehaviour
@@ -25,7 +23,6 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void NewGame()
     {
-        this.gameData = new GameData();
     }
 
     public void LoadGame()
@@ -35,16 +32,16 @@ public class DataPersistenceManager : MonoBehaviour
             Debug.Log("No data was found. Initializing data to defaults.");
             NewGame();
         }
-        foreach(IDataPersitence dataPersitenceObj in dataPersitenceObjects)
+        foreach (IDataPersitence dataPersitenceObj in dataPersitenceObjects)
         {
             dataPersitenceObj.LoadData(gameData);
         }
-        Debug.Log("Loaded Time Survivor = " + gameData.timeSuvivor);
+        Debug.Log("Loaded Time Survivor = " + gameData.timeSuvivor.text);
     }
 
     public void SaveGame()
     {
-        foreach(IDataPersitence dataPersitenceObj in dataPersitenceObjects)
+        foreach (IDataPersitence dataPersitenceObj in dataPersitenceObjects)
         {
             dataPersitenceObj.SaveData(ref gameData);
         }

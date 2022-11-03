@@ -710,7 +710,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7529217791600421230}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.86, y: -0.196, z: 0}
+  m_LocalPosition: {x: 0.82, y: -0.196, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -759,9 +759,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 201984111, guid: 23d536d6083344698e17aa8fc049b99f, type: 3}
+  m_Sprite: {fileID: -1277109881, guid: 80512a296c97a274dbeb97c14d156f31, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.69, y: 0.68}
@@ -901,7 +901,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 850289cf636fdec4295764aba8a01556, type: 2}
   joystick: {fileID: 8170153791668043265, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
-  pauseMenuScreen: {fileID: 1802595554520927394, guid: ab00347a22210984b95198e66e295ba7, type: 3}
   FireRate: 1
   nextTimeToFire: 0
   Force: 150

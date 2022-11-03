@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,6 +35,4 @@ public class TimerManager : MonoBehaviour, IDataPersitence
         string seconds = (currentTime % 60).ToString("00");
         timerCounter.text = "Time: " + String.Format("{0}:{1}", minutes, seconds);
     }
-
-
 }
