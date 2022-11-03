@@ -19,17 +19,17 @@ public class CameraController : MonoBehaviour
             tPlayer = GameObject.FindWithTag("Player");
             Debug.Log("Spawn");
         }
-        if (PlayerManager.replayBt && tPlayer == null)
-        {
-            SpawnPlayerManager spawnPlayerManager = gameObject.AddComponent<SpawnPlayerManager>();
-            spawnPlayerManager.SpawnPlayer();
-            if (SpawnPlayerManager.isCreated == true)
-            {
-                Debug.Log("Spawnn");
-            }
-            tPlayer = GameObject.FindWithTag("Player");
-            Debug.Log("Found");
-        }
+        //if (PlayerManager.replayBt && tPlayer == null)
+        //{
+        //    SpawnPlayerManager spawnPlayerManager = gameObject.AddComponent<SpawnPlayerManager>();
+        //    spawnPlayerManager.SpawnPlayer();
+        //    if (SpawnPlayerManager.isCreated == true)
+        //    {
+        //        Debug.Log("Spawnn");
+        //    }
+        //    tPlayer = GameObject.FindWithTag("Player");
+        //    Debug.Log("Found");
+        //}
         vcam.LookAt = tPlayer.transform;
         vcam.Follow = tPlayer.transform;
     }
