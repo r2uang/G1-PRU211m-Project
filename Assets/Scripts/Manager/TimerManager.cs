@@ -5,7 +5,7 @@ using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimerManager : MonoBehaviour
+public class TimerManager : MonoBehaviour, IDataPersitence
 {
 
     public Text timerCounter;
@@ -20,7 +20,15 @@ public class TimerManager : MonoBehaviour
     {
     }
 
-   
+    public void LoadData(GameData gameData)
+    {
+        this.timerCounter = gameData.timeSuvivor;
+    }
+    public void SaveData(ref GameData gameData)
+    {
+        gameData.timeSuvivor = this.timerCounter;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -29,4 +37,6 @@ public class TimerManager : MonoBehaviour
         string seconds = (currentTime % 60).ToString("00");
         timerCounter.text = "Time: " + String.Format("{0}:{1}", minutes, seconds);
     }
+
+
 }
