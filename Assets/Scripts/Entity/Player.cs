@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour, IBaseEntity
 {
@@ -48,12 +47,15 @@ public class Player : MonoBehaviour, IBaseEntity
 
     public Animator animator;
 
+    public static bool isGameOver;
+
     private void Awake()
     {
         SkillManager.instance.player = gameObject.GetComponent<Player>();
         playerData.HP = 100;
         playerData.speed = 5;
         playerData.armor = 0;
+        isGameOver = false;
     }
 
     void Start()
@@ -151,7 +153,7 @@ public class Player : MonoBehaviour, IBaseEntity
         {
             if (Time.time > nextTimeToFire)
             {
-                nextTimeToFire = Time.time + 1 / FireRate;
+                nextTimeToFire = Time.time + FireRate;
                 if (isFireBulletHell && this.timeToFireBulletHell <= 0)
                 {
                     Debug.Log(saveTimeToFireBulletHell);

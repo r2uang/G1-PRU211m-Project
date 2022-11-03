@@ -3,7 +3,7 @@ using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimerManager : MonoBehaviour, IDataPersitence
+public class TimerManager : MonoBehaviour
 {
 
     public Text timerCounter;
@@ -18,14 +18,7 @@ public class TimerManager : MonoBehaviour, IDataPersitence
     {
     }
 
-    public void LoadData(GameData gameData)
-    {
-        this.timerCounter = gameData.timeSuvivor;
-    }
-    public void SaveData(ref GameData gameData)
-    {
-        gameData.timeSuvivor = this.timerCounter;
-    }
+
 
     // Update is called once per frame
     void Update()

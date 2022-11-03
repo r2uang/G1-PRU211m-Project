@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -14,16 +12,16 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
     private void Update()
-    {  
-        direction = (bulletPoint.localRotation * Vector2.right).normalized;  
+    {
+        direction = (bulletPoint.localRotation * Vector2.right).normalized;
     }
 
 
-    public void Shoot(Vector2 Direction,float Force)
+    public void Shoot(Vector2 Direction, float Force)
     {
         GameObject BulletIns = Instantiate(Bullet, bulletPoint.position, Quaternion.identity);
         BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * Force);

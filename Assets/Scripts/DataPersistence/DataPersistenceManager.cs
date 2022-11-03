@@ -36,7 +36,7 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersitenceObj.LoadData(gameData);
         }
-        Debug.Log("Loaded Time Survivor = " + gameData.timeSuvivor.text);
+
     }
 
     public void SaveGame()

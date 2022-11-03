@@ -7,7 +7,7 @@ public class ArmScript : MonoBehaviour
     public float angle;
     void Start()
     {
-        joystick = GameObject.FindGameObjectWithTag("InputControl").GetComponent<FloatingJoystick>();
+        //joystick = GameObject.FindGameObjectWithTag("InputControl").GetComponent<FloatingJoystick>();
     }
     // Update is called once per frame
     void Update()
