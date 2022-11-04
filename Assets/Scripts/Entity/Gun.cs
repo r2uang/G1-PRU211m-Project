@@ -23,6 +23,7 @@ public class Gun : MonoBehaviour
 
     public void Shoot(Vector2 Direction, float Force)
     {
+
         GameObject BulletIns = Instantiate(Bullet, bulletPoint.position, Quaternion.identity);
         BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * Force);
     }

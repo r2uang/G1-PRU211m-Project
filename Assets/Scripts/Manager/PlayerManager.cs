@@ -23,6 +23,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (isGameOver)
         {
+            Time.timeScale = 0;
             gameOverScreen.SetActive(true);
         }
     }

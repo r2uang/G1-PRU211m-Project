@@ -168,6 +168,7 @@ public class Player : MonoBehaviour, IBaseEntity
     private void Shoot()
     {
         guns[0].Shoot(Direction, Force);
+        AudioManager.PlaySound("fire");
     }
 
     private void ShootBulletHell()
