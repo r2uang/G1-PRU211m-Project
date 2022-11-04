@@ -53,13 +53,18 @@ public class SkillManager : MonoBehaviour
 
     public void UpdateButton()
     {
+        if(activeSkill == null)
+        {
+            skillButtons[1].skillDesc.text = $"!!!Please choose one skill to upgrade!!!";
+            return;
+        }
         if(activeSkill.numberOfChoose <= 3)
         {
             activeSkill.numberOfChoose += 1;
             UpdateSkill(activeSkill.skillName);
             activeSkill.stars[activeSkill.numberOfChoose - 1].SetActive(true);
             skillChooser.Resume();
-            Debug.Log(activeSkill.numberOfChoose);
+            activeSkill = null;
         }
         else
         {
