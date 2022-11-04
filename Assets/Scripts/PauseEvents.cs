@@ -8,6 +8,8 @@ public class PauseEvents : MonoBehaviour
     // Start is called before the first frame update
     
     public GameObject pauseMenuScreen;
+
+    public GameObject saveGame;
     public void PauseGame()
     {
         Time.timeScale = 0;
@@ -18,6 +20,11 @@ public class PauseEvents : MonoBehaviour
     {
         Time.timeScale = 1;
         pauseMenuScreen.SetActive(false);
+    }
+
+    public void SaveGame()
+    {
+        saveGame.SetActive(true);
     }
 
     public void GoToMenu(int index)

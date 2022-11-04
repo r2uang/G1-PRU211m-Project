@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Player : MonoBehaviour, IBaseEntity
 {
     public BaseData.PlayerDataManager playerData;
@@ -218,6 +219,7 @@ public class Player : MonoBehaviour, IBaseEntity
     {
         _body.velocity = Vector3.zero;
     }
+
     enum State
     {
         IDLE = 0,

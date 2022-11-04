@@ -44,7 +44,7 @@ public class HealthManager : MonoBehaviour
     public void HurtPlayer(float damageReceive)
     {
         currentHealth -= damageReceive - player.playerData.armor;
-        if (currentHealth <= 99)
+        if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
             PlayerManager.isGameOver = true;
