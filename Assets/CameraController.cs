@@ -4,8 +4,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     private CinemachineVirtualCamera vcam;
-    public static GameObject tPlayer;
-    private GameObject newPlayer;
+    private GameObject tPlayer;
     void Start()
     {
         vcam = GetComponent<CinemachineVirtualCamera>();

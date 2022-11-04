@@ -32,6 +32,5 @@ public class PlayerManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         replayBt = true;
-        CameraController.tPlayer = null;
     }
 }

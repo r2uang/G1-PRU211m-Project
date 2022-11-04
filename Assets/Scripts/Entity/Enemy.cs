@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour, IBaseEntity
         }
         else
         {
-            if (Vector3.Distance(target.position, transform.position) <= enemyData.range)
+            if (Vector3.Distance(target.position, transform.position) <= enemyData.range + 20)
             {
                 Movement();
             }

@@ -29,6 +29,6 @@ public class PauseEvents : MonoBehaviour
 
     public void GoToMenu(int index)
     {
-        SceneManager.LoadScene(index);
+        SceneManager.LoadSceneAsync(index,LoadSceneMode.Single);
     }
 }

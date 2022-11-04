@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkillManager : MonoBehaviour
+public class SkillManager : MonoBehaviour,IDataPersitence
 {
     public static SkillManager instance;
     public Skill[] skills;
@@ -12,6 +12,7 @@ public class SkillManager : MonoBehaviour
     private SkillChooser skillChooser;
     public Player player;
     public HealthManager healthManager;
+    public TimerManager timerManager;
 
     private void Awake()
     {
@@ -128,5 +129,19 @@ public class SkillManager : MonoBehaviour
                 Debug.Log("Upgrades");
                 break;
         }
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        timerManager.timerCounter.text = gameData.timeSuvivor;
+        healthManager.currentHealth = gameData.currentHP;
+        healthManager.maxHealth = gameData.maxHP;
+    }
+
+    public void SaveData(ref GameData gameData)
+    {
+        gameData.timeSuvivor = timerManager.timerCounter.text;
+        gameData.currentHP = healthManager.currentHealth;
+        gameData.maxHP = healthManager.maxHealth;
     }
 }

@@ -23,10 +23,10 @@ public class SpawnPlayerManager : MonoBehaviour
 
     public void SpawnPlayer()
     {
-        if (!isCreated)
-        {
+        //if (!isCreated)
+        //{
             Instantiate(playerPrefab, pos.position, Quaternion.identity);
-            isCreated = true;
-        }
+            //isCreated = true;
+        //}
     }
 }

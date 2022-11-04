@@ -8,6 +8,6 @@ public class SaveGame : MonoBehaviour
     public void Confirm()
     {
        DataPersistenceManager.instance.SaveGame();
-       SceneManager.LoadSceneAsync("Menu Scene");
+       SceneManager.LoadSceneAsync("Menu Scene",LoadSceneMode.Single);
     }
 }

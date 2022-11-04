@@ -2,21 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimerManager : MonoBehaviour,IDataPersitence
+public class TimerManager : MonoBehaviour
 {
 
     public Text timerCounter;
 
     public float currentTime;
-    public void LoadData(GameData gameData)
-    {
-        timerCounter.text = gameData.timeSuvivor;
-    }
-
-    public void SaveData(ref GameData gameData)
-    {
-        gameData.timeSuvivor = timerCounter.text;
-    }
 
 
     // Start is called before the first frame update

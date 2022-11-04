@@ -66,7 +66,7 @@ public class LevelManager : MonoBehaviour
             ++level;
             currentExp -= totalXPToReachLevel;
             exp.value = currentExp;
-            totalXPToReachLevel += TotalXPToReachLevel(level);
+            totalXPToReachLevel = TotalXPToReachLevel(level);
             exp.maxValue = totalXPToReachLevel;
             UpdateLevel(level);
         }
@@ -85,7 +85,7 @@ public class LevelManager : MonoBehaviour
         text_2.text = (this.level + 1).ToString();
         for(int i = 0; i < objectPooler.pools.Count - 1; i++)
         {
-            objectPooler.pools[i].maxSize += (objectPooler.pools[i].maxSize * 10) / 100;
+            objectPooler.pools[i].maxSize += (objectPooler.pools[i].maxSize * 5) / 100;
         }
     }
 
