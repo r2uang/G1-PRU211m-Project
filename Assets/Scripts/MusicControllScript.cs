@@ -5,7 +5,7 @@ public class MusicControllScript : MonoBehaviour
     private static MusicControllScript instance;
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
         if (instance = null)
         {
             instance = this;

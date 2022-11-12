@@ -52,7 +52,6 @@ public class Player : MonoBehaviour, IBaseEntity
 
     private void Awake()
     {
-        SkillManager.instance.player = gameObject.GetComponent<Player>();
         playerData.HP = 100;
         playerData.speed = 5;
         playerData.armor = 0;
@@ -61,6 +60,7 @@ public class Player : MonoBehaviour, IBaseEntity
 
     void Start()
     {
+        SkillManager.instance.player = gameObject.GetComponent<Player>();
         guns = transform.GetComponentsInChildren<Gun>();
         Target = transform;
         Range = playerData.shootingRange;

@@ -27,7 +27,7 @@ public class SkillManager : MonoBehaviour,IDataPersitence
                 Destroy(gameObject);
             }
         }
-        DontDestroyOnLoad(instance);
+        //DontDestroyOnLoad(instance);
     }
 
     private void Start()
@@ -54,6 +54,7 @@ public class SkillManager : MonoBehaviour,IDataPersitence
 
     public void UpdateButton()
     {
+        Debug.Log("Active Skill: " + activeSkill);
         if(activeSkill == null)
         {
             skillButtons[1].skillDesc.text = $"!!!Please choose one skill to upgrade!!!";
@@ -90,8 +91,8 @@ public class SkillManager : MonoBehaviour,IDataPersitence
                 Debug.Log("Upgrades");
                 break;
             case "Rapid Fire":
-                player.FireRate -= (player.FireRate * 10) / 100;
-                Debug.Log("Upgrades");
+                player.FireRate -= ((player.FireRate * 10) / 100);
+                Debug.Log(player.FireRate);
                 break;
             case "Bullet Hell":
                 player.isFireBulletHell = true;

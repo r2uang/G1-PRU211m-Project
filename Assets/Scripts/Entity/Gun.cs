@@ -3,7 +3,6 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
 
-    Vector2 direction;
     [SerializeField]
     private Transform bulletPoint;
 
@@ -17,7 +16,6 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
-        direction = (bulletPoint.localRotation * Vector2.right).normalized;
     }
 
 

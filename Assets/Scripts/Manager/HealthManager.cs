@@ -10,12 +10,13 @@ public class HealthManager : MonoBehaviour
     public bool isRegen = false;
     private void Awake()
     {
-        SkillManager.instance.healthManager = this;
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        SkillManager.instance.healthManager = this;
         timeToHealth = 3f;
         player = GetComponent<Player>();
         maxHealth = player.playerData.HP;
