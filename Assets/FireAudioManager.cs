@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class AudioManager : Singleton<AudioManager>
+public class FireAudioManager : MonoBehaviour
 {
     public static AudioClip fire;
     public static AudioSource audioSource;
