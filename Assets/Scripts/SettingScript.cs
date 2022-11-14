@@ -8,4 +8,9 @@ public class SettingScript : MonoBehaviour
     {
         settingScreen.SetActive(true);
     }
+
+    public void CloseSetting()
+    {
+        settingScreen.SetActive(false);
+    }
 }
