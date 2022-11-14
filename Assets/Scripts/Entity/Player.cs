@@ -52,6 +52,7 @@ public class Player : MonoBehaviour, IBaseEntity
 
     private void Awake()
     {
+        GameObject.FindGameObjectWithTag("SaveLoad").GetComponent<SaveLoadSystemScript>().Load();
         playerData.HP = 100;
         playerData.speed = 5;
         playerData.armor = 0;
@@ -169,7 +170,7 @@ public class Player : MonoBehaviour, IBaseEntity
     private void Shoot()
     {
         guns[0].Shoot(Direction, Force);
-        FireAudioManager.PlaySound("fire");
+        Audio.PlaySound("fire");
     }
 
     private void ShootBulletHell()

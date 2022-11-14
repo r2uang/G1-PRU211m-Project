@@ -18,7 +18,7 @@ MonoBehaviour:
   percentRegenHP: 1
   armor: 4
   percentDamage: 0
-  meleeDamage: 2
+  meleeDamage: 3
   rangeDamage: 0
   elementDamage: 0
   percentLifeSteel: 0

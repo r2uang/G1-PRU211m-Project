@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : MonoBehaviour,ISavevable
 {
 
     private const float EXP_VALUE = 100;
@@ -40,6 +40,8 @@ public class LevelManager : MonoBehaviour
 
     private GameObject skillChooser;
 
+    private static bool isSave = false;
+
 
     private void Awake()
     {
@@ -49,8 +51,13 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        level = 1;
-        currentExp = 0;
+        if (!isSave)
+        {
+            level = 1;
+            currentExp = 0;
+        }
+        text_1.text = this.level.ToString();
+        text_2.text = (this.level + 1).ToString();
         exp.value = currentExp;
         objectPooler = ObjectPooler.Instance;
         totalXPToReachLevel = TotalXPToReachLevel(level);
@@ -61,7 +68,7 @@ public class LevelManager : MonoBehaviour
     {
         currentExp += expValue;
         exp.value = currentExp;
-        if(currentExp >= totalXPToReachLevel)
+        if (currentExp >= totalXPToReachLevel)
         {
             ++level;
             currentExp -= totalXPToReachLevel;
@@ -98,5 +105,31 @@ public class LevelManager : MonoBehaviour
     private float TotalXPToReachLevel(float level)
     {
         return (EXP_VALUE * level * (level + 1)) / 2;
+    }
+
+    public object SaveState()
+    {
+        isSave = true;
+        return new LevelData()
+        {
+            level = this.level,
+            currentExp = this.currentExp,
+        };
+    }
+
+    public void LoadState(object state)
+    {
+        var data = (LevelData)state;
+        this.level = data.level;
+        this.currentExp = data.currentExp;
+    }
+
+    [System.Serializable]
+    private struct LevelData
+    {
+        public int level;
+
+        public float currentExp;
+
     }
 }

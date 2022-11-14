@@ -24,6 +24,7 @@ public class PauseEvents : MonoBehaviour
 
     public void SaveGame()
     {
+        pauseMenuScreen.SetActive(false);
         saveGame.SetActive(true);
     }
 

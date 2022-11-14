@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkillManager : MonoBehaviour,IDataPersitence
+public class SkillManager : MonoBehaviour
 {
     public static SkillManager instance;
     public Skill[] skills;
@@ -87,7 +87,7 @@ public class SkillManager : MonoBehaviour,IDataPersitence
                 Debug.Log("Upgrades");
                 break;
             case "Increase Armour":
-                player.playerData.armor += 5;
+                player.playerData.armor += 1;
                 Debug.Log("Upgrades");
                 break;
             case "Rapid Fire":
@@ -130,19 +130,5 @@ public class SkillManager : MonoBehaviour,IDataPersitence
                 Debug.Log("Upgrades");
                 break;
         }
-    }
-
-    public void LoadData(GameData gameData)
-    {
-        timerManager.timerCounter.text = gameData.timeSuvivor;
-        healthManager.currentHealth = gameData.currentHP;
-        healthManager.maxHealth = gameData.maxHP;
-    }
-
-    public void SaveData(ref GameData gameData)
-    {
-        gameData.timeSuvivor = timerManager.timerCounter.text;
-        gameData.currentHP = healthManager.currentHealth;
-        gameData.maxHP = healthManager.maxHealth;
     }
 }

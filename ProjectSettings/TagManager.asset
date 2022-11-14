@@ -13,6 +13,7 @@ TagManager:
   - Exp Bar
   - Skill Chooser
   - PauseMenu
+  - SaveLoad
   layers:
   - Default
   - TransparentFX

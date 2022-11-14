@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireAudioManager : MonoBehaviour
+public class Audio : MonoBehaviour
 {
     public static AudioClip fire;
     public static AudioSource audioSource;

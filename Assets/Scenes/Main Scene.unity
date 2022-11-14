@@ -1395,9 +1395,9 @@ MonoBehaviour:
   - {fileID: 854048444}
   - {fileID: 1045872675}
   activeSkill: {fileID: 0}
-  player: {fileID: 0}
-  healthManager: {fileID: 0}
-  timerManager: {fileID: 0}
+  player: {fileID: 1497219648}
+  healthManager: {fileID: 1497219647}
+  timerManager: {fileID: 1465396259}
 --- !u!1 &331162151
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,28 +1489,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 349464797}
-  - component: {fileID: 349464796}
+  - component: {fileID: 349464798}
   m_Layer: 0
-  m_Name: DataPersistenceManager
-  m_TagString: Untagged
+  m_Name: SaveLoadSystem
+  m_TagString: SaveLoad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &349464796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 349464795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2d39bd65e5881c46bd18713bf0b7b30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fileName: data.game
-  useEncryption: 0
 --- !u!4 &349464797
 Transform:
   m_ObjectHideFlags: 0
@@ -1526,6 +1512,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &349464798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349464795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85894723be4cab94ea87a8c685e03dde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &350100044
 GameObject:
   m_ObjectHideFlags: 0
@@ -1823,7 +1821,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1, y: 1}
+    m_SensorSize: {x: 0.47368422, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3630,6 +3628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 993563881}
   - component: {fileID: 993563882}
+  - component: {fileID: 993563883}
   m_Layer: 5
   m_Name: Level
   m_TagString: Exp Bar
@@ -3679,6 +3678,19 @@ MonoBehaviour:
   smallEnemy: {fileID: 7970205845878994290, guid: 3af1a63eb2b0e1f41adf307c5ad89ff0, type: 3}
   bigEnemy: {fileID: 7970205845878994290, guid: fa26e89cb7ee993448259021f5185c3a, type: 3}
   exp: {fileID: 1898704870}
+--- !u!114 &993563883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993563880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf88f380228a50a4f986f7dc3b5f0cfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: fcbaf618-caf6-47cb-8106-14c4f31ecdf8
 --- !u!1 &997882870
 GameObject:
   m_ObjectHideFlags: 0
@@ -4549,7 +4561,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1236928366}
   - component: {fileID: 1236928367}
-  - component: {fileID: 1236928365}
+  - component: {fileID: 1236928368}
   m_Layer: 0
   m_Name: SoundController
   m_TagString: Untagged
@@ -4557,18 +4569,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1236928365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1236928364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf054570917f9aa4eaa2fd67844df3f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1236928366
 Transform:
   m_ObjectHideFlags: 0
@@ -4680,6 +4680,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1236928368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236928364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f42725fd6ae9a4c9bbb8bccbf44467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1324310737
 GameObject:
   m_ObjectHideFlags: 0
@@ -4817,6 +4829,7 @@ GameObject:
   - component: {fileID: 1465396258}
   - component: {fileID: 1465396257}
   - component: {fileID: 1465396259}
+  - component: {fileID: 1465396260}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -4902,6 +4915,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerCounter: {fileID: 1465396257}
   currentTime: 0
+--- !u!114 &1465396260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465396255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf88f380228a50a4f986f7dc3b5f0cfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: bb721ef1-b7b4-49f1-999b-ecd3a4780cf6
 --- !u!1001 &1497219646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4967,6 +4993,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd6473e6e4c5d6e45973137f52545072, type: 3}
+--- !u!114 &1497219647 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1157617214888958755, guid: fd6473e6e4c5d6e45973137f52545072, type: 3}
+  m_PrefabInstance: {fileID: 1497219646}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 587a2d0c276ed3f4eae5a36e70409d10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1497219648 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7530626677350129736, guid: fd6473e6e4c5d6e45973137f52545072, type: 3}
+  m_PrefabInstance: {fileID: 1497219646}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce99932e8f19981448267ef07a30aa18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1561595686
 GameObject:
   m_ObjectHideFlags: 0

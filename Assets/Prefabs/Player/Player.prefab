@@ -841,6 +841,7 @@ GameObject:
   - component: {fileID: 838435057263094381}
   - component: {fileID: 7530626677350129736}
   - component: {fileID: 1157617214888958755}
+  - component: {fileID: -1886954989927159322}
   - component: {fileID: 8125713869201613558}
   - component: {fileID: 1756103686904708338}
   m_Layer: 0
@@ -925,6 +926,19 @@ MonoBehaviour:
   maxHealth: 0
   saveTimeToHealth: 0
   isRegen: 0
+--- !u!114 &-1886954989927159322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7970205845878994290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf88f380228a50a4f986f7dc3b5f0cfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: f417a64e-3e07-4629-8425-cb00994f2fad
 --- !u!58 &8125713869201613558
 CircleCollider2D:
   m_ObjectHideFlags: 0

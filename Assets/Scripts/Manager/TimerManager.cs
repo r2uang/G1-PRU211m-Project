@@ -2,31 +2,22 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimerManager : MonoBehaviour,IDataPersitence
+public class TimerManager : MonoBehaviour,ISavevable
 {
 
     public Text timerCounter;
 
     public float currentTime;
 
-    public void LoadData(GameData gameData)
+    public void LoadState(object state)
     {
-        this.timerCounter.text = gameData.timeSuvivor;
+        currentTime = (float)state;
     }
 
-    public void SaveData(ref GameData gameData)
+    public object SaveState()
     {
-        gameData.timeSuvivor = timerCounter.text;
+        return currentTime;
     }
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-
 
     // Update is called once per frame
     void Update()

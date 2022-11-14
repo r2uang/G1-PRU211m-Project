@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HealthManager : MonoBehaviour
+public class HealthManager : MonoBehaviour, ISavevable
 {
     private Player player;
     public float currentHealth;
@@ -8,10 +8,9 @@ public class HealthManager : MonoBehaviour
     private float timeToHealth;
     public float saveTimeToHealth;
     public bool isRegen = false;
-    private void Awake()
-    {
-        
-    }
+    public static bool isSave = false;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,8 +18,11 @@ public class HealthManager : MonoBehaviour
         SkillManager.instance.healthManager = this;
         timeToHealth = 3f;
         player = GetComponent<Player>();
-        maxHealth = player.playerData.HP;
-        currentHealth = player.playerData.HP;
+        if (!isSave)
+        {
+            maxHealth = player.playerData.HP;
+            currentHealth = player.playerData.HP;
+        }
     }
 
     // Update is called once per frame
@@ -50,5 +52,29 @@ public class HealthManager : MonoBehaviour
             gameObject.SetActive(false);
             PlayerManager.isGameOver = true;
         }
+    }
+
+    public object SaveState()
+    {
+        isSave = true;
+        return new HealthData()
+        {
+            currentHealth = this.currentHealth,
+            maxHealth = this.maxHealth
+        };
+    }
+
+    public void LoadState(object state)
+    {
+        var data = (HealthData)state;
+        currentHealth = data.currentHealth;
+        maxHealth = data.maxHealth;
+    }
+
+    [System.Serializable]
+    private struct HealthData
+    {
+        public float currentHealth;
+        public float maxHealth;
     }
 }

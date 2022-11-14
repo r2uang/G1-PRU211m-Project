@@ -7,7 +7,7 @@ public class SaveGame : MonoBehaviour
 {
     public void Confirm()
     {
-       DataPersistenceManager.instance.SaveGame();
-       SceneManager.LoadSceneAsync("Menu Scene",LoadSceneMode.Single);
+        GameObject.FindGameObjectWithTag("SaveLoad").GetComponent<SaveLoadSystemScript>().Save();
+        SceneManager.LoadSceneAsync("Menu Scene",LoadSceneMode.Single);
     }
 }
