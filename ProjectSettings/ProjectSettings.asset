@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: fpt
-  productName: Astronaut Survivor
+  productName: Mars Survivor
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.12156863, g: 0.12156863, b: 0.1254902, a: 1}
@@ -135,7 +135,9 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 1.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: -3021309479734978769, guid: 835de7068e6308d4e996536df84b9501, type: 2}
+  - {fileID: 11400000, guid: 20937bd8e61b53e49820da954920dd0c, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -155,7 +157,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.fpt.AstronautSurvivor
+    Android: com.fpt.MarsSurvivor
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -249,7 +251,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/APK/user.keystore
+  AndroidKeystoreName: D:/PRU/Survior Game/user.keystore
   AndroidKeyaliasName: fpt
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
